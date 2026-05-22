@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GRYNE - Business &amp; Global Supply Chain</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "surface-container": "#f0edec",
+                        "surface-dim": "#dcd9d9",
+                        "inverse-surface": "#313030",
+                        "surface-bright": "#fcf9f8",
+                        "secondary": "#705b42",
+                        "tertiary-container": "#5f2300",
+                        "on-primary-fixed-variant": "#234f3f",
+                        "surface-tint": "#3b6756",
+                        "primary-container": "#0f3d2e",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#717974",
+                        "on-secondary-container": "#766148",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#beedd7",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed-dim": "#dec2a4",
+                        "on-secondary-fixed-variant": "#57432c",
+                        "error-container": "#ffdad6",
+                        "vibrant-yellow": "#FFD600",
+                        "surface-container-high": "#ebe7e7",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#002116",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#3d1300",
+                        "surface-container-highest": "#e5e2e1",
+                        "outline-variant": "#c0c8c3",
+                        "primary-fixed-dim": "#a2d1bb",
+                        "secondary-container": "#fbdebe",
+                        "inverse-primary": "#a2d1bb",
+                        "background": "#fcf9f8",
+                        "electric-blue": "#2E5BFF",
+                        "on-tertiary-container": "#f77b3a",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-tertiary-fixed": "#351000",
+                        "on-primary-container": "#7ba894",
+                        "surface-variant": "#e5e2e1",
+                        "on-background": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "on-surface-variant": "#414944",
+                        "secondary-fixed": "#fbdebe",
+                        "on-secondary-fixed": "#271906",
+                        "tertiary-fixed": "#ffdbcc",
+                        "primary": "#00261a",
+                        "on-surface": "#1c1b1b",
+                        "canvas-cream": "#F9F6F0",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "40px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Anton"],
+                        "headline-lg-mobile": ["Anton"],
+                        "button-text": ["Anton"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Anton"],
+                        "label-caps": ["Space Mono"],
+                        "display-xl": ["Anton"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["48px", { "lineHeight": "52px", "fontWeight": "400" }],
+                        "button-text": ["18px", { "lineHeight": "18px", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "headline-md": ["40px", { "lineHeight": "48px", "fontWeight": "400" }],
+                        "label-caps": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-xl": ["120px", { "lineHeight": "110px", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .parallax-floater {
+            will-change: transform;
+            transition: transform 0.1s ease-out;
+        }
+        .hard-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(0,38,26,1);
+        }
+        .hard-shadow-yellow {
+            box-shadow: 4px 4px 0px 0px #FFD600;
+        }
+        .sticker {
+            border: 2px solid #00261a;
+        }
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-electric-blue selection:text-on-primary pt-24">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/90 dark:bg-background/90 backdrop-blur-md border-b-2 border-primary dark:border-primary-fixed shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] dark:shadow-[4px_4px_0px_0px_rgba(162,209,187,1)]">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-[1440px] mx-auto">
+<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed uppercase tracking-tighter hover:scale-105 transition-transform duration-300" href="#">GRYNE</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-button-text text-button-text text-electric-blue dark:text-electric-blue font-bold underline decoration-2 underline-offset-8 translate-y-0.5 transition-transform" href="#">Business</a>
+<a class="font-button-text text-button-text text-primary dark:text-primary-fixed hover:text-electric-blue hover:-translate-y-0.5 transition-all duration-300" href="#">About Us</a>
+<a class="font-button-text text-button-text text-primary dark:text-primary-fixed hover:text-electric-blue hover:-translate-y-0.5 transition-all duration-300" href="#">Gallery</a>
+<a class="font-button-text text-button-text text-primary dark:text-primary-fixed hover:text-electric-blue hover:-translate-y-0.5 transition-all duration-300" href="#">Blog</a>
+<a class="font-button-text text-button-text text-primary dark:text-primary-fixed hover:text-electric-blue hover:-translate-y-0.5 transition-all duration-300" href="#">CSR</a>
+<a class="font-button-text text-button-text text-primary dark:text-primary-fixed hover:text-electric-blue hover:-translate-y-0.5 transition-all duration-300" href="#">Contact</a>
+</div>
+<button class="hidden md:block sticker bg-background text-primary font-button-text text-button-text px-6 py-2 hover:bg-primary hover:text-on-primary transition-all duration-200 hard-shadow">
+                Wholesale Inquiry
+            </button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu</span>
+</button>
+</div>
+</nav>
+<!-- Marquee Banner -->
+<div class="bg-primary text-vibrant-yellow overflow-hidden py-4 border-b-4 border-vibrant-yellow relative z-40">
+<div class="flex whitespace-nowrap animate-marquee font-headline-md text-headline-md uppercase tracking-wide">
+<span class="mx-8">GLOBAL SUPPLY CHAIN</span>
+<span class="mx-8 text-on-primary">•</span>
+<span class="mx-8">RAW AFRICAN ORIGIN</span>
+<span class="mx-8 text-on-primary">•</span>
+<span class="mx-8">PRECISION INDIAN MILLING</span>
+<span class="mx-8 text-on-primary">•</span>
+<span class="mx-8">GLOBAL SUPPLY CHAIN</span>
+<span class="mx-8 text-on-primary">•</span>
+<span class="mx-8">RAW AFRICAN ORIGIN</span>
+<span class="mx-8 text-on-primary">•</span>
+<span class="mx-8">PRECISION INDIAN MILLING</span>
+</div>
+</div>
+<main class="max-w-[1440px] mx-auto px-margin-safe pb-section-gap pt-12">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-section-gap items-center relative">
+<div class="md:col-span-6 relative z-10">
+<span class="inline-block bg-vibrant-yellow text-primary font-label-caps text-label-caps px-3 py-1 sticker mb-6 uppercase">Business Operations</span>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase leading-none mb-6">
+                    Scaling <span class="text-electric-blue">Quality</span> <br/>Across Continents.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-lg">
+                    We manage the entire lifecycle of the cashew. From deep roots in West Africa to precision processing facilities in India, delivering unmatched quality to wholesale partners worldwide.
+                </p>
+<button class="sticker bg-primary text-on-primary font-button-text text-button-text px-8 py-4 hover:bg-electric-blue hover:text-on-primary transition-all duration-200 hard-shadow-yellow inline-flex items-center gap-2">
+                    Partner With Us
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="md:col-span-6 relative h-[500px] sticker overflow-hidden hard-shadow mt-12 md:mt-0 bg-secondary-container">
+<img alt="Cashew processing facility" class="w-full h-full object-cover object-center mix-blend-multiply opacity-80" data-alt="A high-contrast, bold editorial shot of a massive industrial food processing facility. Vast metal silos and conveyor belts are visible in the background, bathed in stark, cool industrial lighting. In the foreground, large burlap sacks filled with raw materials are neatly stacked, creating a geometric pattern. The scene has a raw, powerful energy, fitting a global supply chain narrative. Deep shadows contrast with bright highlights, emphasizing scale and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuA1c7rGBNLMdGqTYTSQRIe2-t_dc5ZWv1msqw4IBQHVqotZmjO0c26kDpaWDimEthcqbzijBVT_Ap6Zhd8O6PSCQl2h72L7_qN5FMz5bIxYZGJ6FM7ZPLPXX4gE5LnJ2dt1CMVqBjwQkX1PEtxbhMb5BE8HY-YyvPixgeLKvXcWz2OlTZkAHA3_FiE0e7bh_QgnmPLMkHuoeAvB5IhE0R2SgEM2zQbcm5o3t-aKxoY1d1btvptAXuZnv5qTkZMbolD7UJ9oNP0AQ"/>
+<!-- Parallax Floater -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-vibrant-yellow rounded-full parallax-floater flex items-center justify-center border-4 border-primary shadow-[8px_8px_0px_0px_rgba(0,38,26,1)]" data-speed="0.2">
+<span class="material-symbols-outlined text-primary" style="font-size: 48px;">factory</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="relative w-full pt-section-gap pb-gutter overflow-hidden bg-primary dark:bg-primary-container border-t-4 border-vibrant-yellow">
+<div class="font-display-xl text-display-xl text-vibrant-yellow dark:text-vibrant-yellow opacity-20 absolute -top-12 left-0 pointer-events-none">
+            GRYNE
+        </div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-safe max-w-[1440px] mx-auto relative z-10">
+<div class="md:col-span-4 flex flex-col gap-6">
+<h3 class="font-headline-lg text-headline-lg text-on-primary">GRYNE</h3>
+<p class="font-body-md text-body-md text-on-primary/80 max-w-xs">
+                    BOLD BY NATURE. Engineered for the global market.
+                </p>
+<p class="font-label-caps text-label-caps text-vibrant-yellow mt-auto pt-8">
+                    © 2024 GRYNE CASHEWS. BOLD BY NATURE.
+                </p>
+</div>
+<div class="md:col-span-8 flex flex-wrap gap-12 md:justify-end mt-12 md:mt-0">
+<div class="flex flex-col gap-4">
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300" href="#">Supply Chain</a>
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300" href="#">Team</a>
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300" href="#">Accreditations</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300" href="#">Impact</a>
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple parallax effect for floaters
+        document.addEventListener('mousemove', (e) => {
+            document.querySelectorAll('.parallax-floater').forEach(floater => {
+                const speed = floater.getAttribute('data-speed') || 0.1;
+                const x = (window.innerWidth - e.pageX * speed) / 50;
+                const y = (window.innerHeight - e.pageY * speed) / 50;
+                floater.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        });
+    </script>
+</body></html>

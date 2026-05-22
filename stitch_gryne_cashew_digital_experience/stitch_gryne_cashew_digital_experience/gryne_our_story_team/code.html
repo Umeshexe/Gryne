@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Gryne</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#7b2f00",
+                      "surface-container": "#f0edec",
+                      "surface-dim": "#dcd9d9",
+                      "inverse-surface": "#313030",
+                      "surface-bright": "#fcf9f8",
+                      "secondary": "#705b42",
+                      "tertiary-container": "#5f2300",
+                      "on-primary-fixed-variant": "#234f3f",
+                      "surface-tint": "#3b6756",
+                      "primary-container": "#0f3d2e",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#717974",
+                      "on-secondary-container": "#766148",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#beedd7",
+                      "surface-container-low": "#f6f3f2",
+                      "secondary-fixed-dim": "#dec2a4",
+                      "on-secondary-fixed-variant": "#57432c",
+                      "error-container": "#ffdad6",
+                      "vibrant-yellow": "#FFD600",
+                      "surface-container-high": "#ebe7e7",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#002116",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#3d1300",
+                      "surface-container-highest": "#e5e2e1",
+                      "outline-variant": "#c0c8c3",
+                      "primary-fixed-dim": "#a2d1bb",
+                      "secondary-container": "#fbdebe",
+                      "inverse-primary": "#a2d1bb",
+                      "background": "#fcf9f8",
+                      "electric-blue": "#2E5BFF",
+                      "on-tertiary-container": "#f77b3a",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-tertiary-fixed": "#351000",
+                      "on-primary-container": "#7ba894",
+                      "surface-variant": "#e5e2e1",
+                      "on-background": "#1c1b1b",
+                      "surface": "#fcf9f8",
+                      "on-surface-variant": "#414944",
+                      "secondary-fixed": "#fbdebe",
+                      "on-secondary-fixed": "#271906",
+                      "tertiary-fixed": "#ffdbcc",
+                      "primary": "#00261a",
+                      "on-surface": "#1c1b1b",
+                      "canvas-cream": "#F9F6F0",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f3f0ef"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-safe": "40px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "section-gap": "120px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Anton"
+                      ],
+                      "headline-lg-mobile": [
+                              "Anton"
+                      ],
+                      "button-text": [
+                              "Anton"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Anton"
+                      ],
+                      "label-caps": [
+                              "Space Mono"
+                      ],
+                      "display-xl": [
+                              "Anton"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "48px",
+                              {
+                                      "lineHeight": "52px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "button-text": [
+                              "18px",
+                              {
+                                      "lineHeight": "18px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-xl": [
+                              "120px",
+                              {
+                                      "lineHeight": "110px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background antialiased font-body-md overflow-x-hidden selection:bg-electric-blue selection:text-white">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] transition-transform duration-300" id="navbar">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-[1440px] mx-auto">
+<!-- Brand Logo -->
+<a class="font-headline-md text-headline-md text-primary uppercase tracking-tighter" href="#">GRYNE</a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex space-x-8 items-center">
+<a class="font-button-text text-button-text text-primary hover:text-electric-blue hover:bg-primary hover:text-on-primary transition-all duration-200 px-3 py-1" href="#">Business</a>
+<a class="font-button-text text-button-text text-electric-blue font-bold underline decoration-2 underline-offset-8 translate-y-0.5 transition-transform px-3 py-1" href="#">About Us</a>
+<a class="font-button-text text-button-text text-primary hover:text-electric-blue hover:bg-primary hover:text-on-primary transition-all duration-200 px-3 py-1" href="#">Gallery</a>
+<a class="font-button-text text-button-text text-primary hover:text-electric-blue hover:bg-primary hover:text-on-primary transition-all duration-200 px-3 py-1" href="#">Blog</a>
+<a class="font-button-text text-button-text text-primary hover:text-electric-blue hover:bg-primary hover:text-on-primary transition-all duration-200 px-3 py-1" href="#">CSR</a>
+<a class="font-button-text text-button-text text-primary hover:text-electric-blue hover:bg-primary hover:text-on-primary transition-all duration-200 px-3 py-1" href="#">Contact</a>
+</div>
+<!-- Trailing Action -->
+<div class="hidden md:block">
+<a class="font-button-text text-button-text bg-vibrant-yellow text-primary border-2 border-primary px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:bg-electric-blue hover:text-white transition-colors duration-200 uppercase inline-block" href="#">Wholesale Inquiry</a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined" style="font-size: 32px;">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="pt-[100px]">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center px-margin-safe max-w-[1440px] mx-auto mb-section-gap overflow-hidden">
+<!-- Decorative floating cashews -->
+<div class="absolute right-[-5%] top-[10%] w-64 h-64 bg-secondary-fixed rounded-full opacity-50 blur-3xl animate-[pulse_6s_ease-in-out_infinite]"></div>
+<div class="absolute left-[10%] bottom-[20%] w-48 h-48 bg-primary-fixed rounded-full opacity-50 blur-3xl animate-[pulse_8s_ease-in-out_infinite_reverse]"></div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full relative z-10">
+<div class="col-span-1 md:col-span-8 md:col-start-1">
+<div class="inline-block font-label-caps text-label-caps bg-vibrant-yellow text-primary px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_rgba(0,38,26,1)]">OUR ORIGINS</div>
+<h1 class="font-display-xl text-display-xl text-primary uppercase leading-[0.85] mb-8">Bold<br/>By<br/>Nature.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l-4 border-electric-blue pl-6 py-2 bg-surface-container/50">
+                        We don't just source cashews. We trace the lineage of flavour from the vibrant red soils of Africa to the meticulous sorting tables of India. Gryne is a global journey of premium taste, uncompromised quality, and unapologetic energy.
+                    </p>
+</div>
+</div>
+<!-- Hero Image Asset -->
+<div class="hidden md:block absolute right-margin-safe bottom-margin-safe w-[400px] h-[500px] border-4 border-primary shadow-[8px_8px_0px_0px_rgba(0,38,26,1)] overflow-hidden z-20 group">
+<img alt="Raw cashew nut still attached to a vibrant red and yellow cashew apple, hanging from a lush green tree branch in a sunny tropical orchard. The scene is brightly lit, showcasing the raw, organic origin of the nut. The image style is vivid, high-contrast photography fitting a premium, energetic brand aesthetic." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Raw cashew nut still attached to a vibrant red and yellow cashew apple, hanging from a lush green tree branch in a sunny tropical orchard. The scene is brightly lit, showcasing the raw, organic origin of the nut. The image style is vivid, high-contrast photography fitting a premium, energetic brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA0QzyHvwRE3lk4qZREnjTGywVrGhNJkr4S4vtYH8hCJCWytPhJdjqi9Q8cjbKXnH8IALGegW4y0yOpXmRMZR1pMfkMMu6rE9Gwy1_9fe-8kThpDhKRMjtgnByu6UbaGb7dgSEQlBxYnh2oDkiCYIpAKrKB3DkqYwHDHv8oSwQ5MQkn6CM3w6FAxfSHGa73MAhAhVefxyAnBgohKnb384tms-llGR7VeUIA-W8fZVPu9Ecd2-rUQBmGYQ0kItnC1DcVMJ0rp0LnBA"/>
+<div class="absolute bottom-4 left-4 font-label-caps text-label-caps bg-black text-white px-3 py-1 border-2 border-white">ORIGIN: WEST AFRICA</div>
+</div>
+</section>
+<!-- Marquee Divider -->
+<div class="w-full bg-primary text-vibrant-yellow py-4 overflow-hidden border-y-4 border-vibrant-yellow mb-section-gap flex items-center">
+<div class="whitespace-nowrap font-headline-md text-headline-md uppercase animate-[marquee_20s_linear_infinite] flex space-x-8 items-center">
+<span>RAW &amp; UNFILTERED</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span>GLOBAL SUPPLY CHAIN</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">public</span>
+<span>PREMIUM GRADE A</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>RAW &amp; UNFILTERED</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span>GLOBAL SUPPLY CHAIN</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">public</span>
+<span>PREMIUM GRADE A</span>
+</div>
+</div>
+<style>
+            @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+        </style>
+<!-- Our Story Timeline -->
+<section class="px-margin-safe max-w-[1440px] mx-auto mb-section-gap">
+<div class="mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase">The Journey</h2>
+</div>
+<div class="relative">
+<!-- Horizontal Line -->
+<div class="absolute top-[28px] left-0 w-full h-[4px] bg-primary z-0 hidden md:block"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter relative z-10">
+<!-- Timeline Item 1 -->
+<div class="bg-surface-container p-6 border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:-translate-y-2 transition-transform duration-300">
+<div class="w-10 h-10 bg-vibrant-yellow border-2 border-primary rounded-full flex items-center justify-center font-headline-md text-[20px] text-primary mb-6 md:-mt-10 mx-auto md:mx-0 shadow-[2px_2px_0px_0px_rgba(0,38,26,1)]">1</div>
+<h3 class="font-headline-md text-[24px] leading-none text-primary uppercase mb-2">The Source</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We begin at the roots, partnering directly with farmers across diverse African terrains to secure the rawest, most potent harvest.</p>
+</div>
+<!-- Timeline Item 2 -->
+<div class="bg-surface-container p-6 border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:-translate-y-2 transition-transform duration-300">
+<div class="w-10 h-10 bg-vibrant-yellow border-2 border-primary rounded-full flex items-center justify-center font-headline-md text-[20px] text-primary mb-6 md:-mt-10 mx-auto md:mx-0 shadow-[2px_2px_0px_0px_rgba(0,38,26,1)]">2</div>
+<h3 class="font-headline-md text-[24px] leading-none text-primary uppercase mb-2">The Transit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Navigating global waters, we maintain stringent control over our raw material, ensuring stability and preserving natural vitality during the voyage.</p>
+</div>
+<!-- Timeline Item 3 -->
+<div class="bg-surface-container p-6 border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:-translate-y-2 transition-transform duration-300">
+<div class="w-10 h-10 bg-vibrant-yellow border-2 border-primary rounded-full flex items-center justify-center font-headline-md text-[20px] text-primary mb-6 md:-mt-10 mx-auto md:mx-0 shadow-[2px_2px_0px_0px_rgba(0,38,26,1)]">3</div>
+<h3 class="font-headline-md text-[24px] leading-none text-primary uppercase mb-2">The Craft</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">In state-of-the-art facilities in India, raw potential is meticulously shelled, sorted, and graded by experts holding decades of knowledge.</p>
+</div>
+<!-- Timeline Item 4 -->
+<div class="bg-surface-container p-6 border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:-translate-y-2 transition-transform duration-300">
+<div class="w-10 h-10 bg-electric-blue border-2 border-primary rounded-full flex items-center justify-center font-headline-md text-[20px] text-white mb-6 md:-mt-10 mx-auto md:mx-0 shadow-[2px_2px_0px_0px_rgba(0,38,26,1)]">4</div>
+<h3 class="font-headline-md text-[24px] leading-none text-primary uppercase mb-2">The World</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Delivering flawless, premium kernels to discerning wholesale buyers and global brands who demand nothing but the absolute best.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bold Team Section -->
+<section class="bg-primary text-on-primary py-section-gap relative overflow-hidden mb-section-gap">
+<!-- Background typography graphic -->
+<div class="absolute -top-10 left-[-5%] font-display-xl text-[200px] text-surface-tint opacity-10 whitespace-nowrap select-none">THE CORE THE CORE</div>
+<div class="px-margin-safe max-w-[1440px] mx-auto relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div>
+<div class="font-label-caps text-label-caps text-vibrant-yellow mb-4">LEADERSHIP</div>
+<h2 class="font-headline-lg text-headline-lg uppercase">The Architects<br/>of Gryne.</h2>
+</div>
+<p class="font-body-lg text-body-lg max-w-md text-primary-fixed-dim">
+                        A syndicate of supply chain veterans, agricultural experts, and market disruptors united by a singular obsession: perfection.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Team Member 1 -->
+<div class="group cursor-pointer">
+<div class="w-full aspect-[3/4] bg-primary-container border-2 border-vibrant-yellow mb-6 relative overflow-hidden">
+<img alt="High-contrast, bold portrait of a confident male executive wearing a sharp dark suit. The lighting is dramatic, highlighting strong facial features against a clean, vibrant solid color background. The aesthetic is modern, editorial, and highly professional." class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="High-contrast, bold portrait of a confident male executive wearing a sharp dark suit. The lighting is dramatic, highlighting strong facial features against a clean, vibrant solid color background. The aesthetic is modern, editorial, and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClXjEJcjhMwURVXm0LKq5vVhZbffeZhDzT3xpKstK5UixjfAkIXiSHEhRlQARMlW4KLiofcbmVMiD2i1rXuxmAS_0wB3wZ6k2zhEYgBsbVxQsnM2jiF2aA_HDpwkftHYiLetOQMzhQSsYv4iqGJev0dXryh8yc8XovL4jFX-2g-hL5apXBsjUssFxOWUEELRH6oAKKrTOQt4Un_zJ75OPd5aGa3IH2Ze34gGfRKJgy8qlw_qN7VPnpNY9flPCDN5m1Ap2mnaRRiBw"/>
+<!-- Overlay block -->
+<div class="absolute bottom-0 left-0 w-full bg-vibrant-yellow text-primary p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 border-t-2 border-primary">
+<span class="font-button-text text-button-text uppercase">Connect</span>
+<span class="material-symbols-outlined align-middle ml-2">arrow_forward</span>
+</div>
+</div>
+<h3 class="font-headline-md text-[32px] leading-none uppercase text-white mb-1 group-hover:text-vibrant-yellow transition-colors">Marcus Thorne</h3>
+<p class="font-label-caps text-label-caps text-electric-blue">Global Sourcing Director</p>
+</div>
+<!-- Team Member 2 -->
+<div class="group cursor-pointer md:translate-y-12">
+<div class="w-full aspect-[3/4] bg-primary-container border-2 border-electric-blue mb-6 relative overflow-hidden">
+<img alt="High-contrast, bold portrait of a confident female executive with a strong gaze, wearing modern business attire. The lighting is dramatic and directional, creating deep shadows and bright highlights against a bold, solid color background. The aesthetic is powerful and editorial." class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="High-contrast, bold portrait of a confident female executive with a strong gaze, wearing modern business attire. The lighting is dramatic and directional, creating deep shadows and bright highlights against a bold, solid color background. The aesthetic is powerful and editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYx2bhwJ73wYWyb85JFY9N_glkI7-rBRB0XOPMM4K0WyfIphubvC39974rSh1-pGF5Tgv5uyGryMk7lB1-5yRfFpACEWGP-4xm_vp9pLqA48CVjMecf88JNd5E9Hmanv7UADh_WMG7mq-A2q2TJKGcGEyoZygd1HAtqSo3V1hE6Uldt29I9HTLdIK7DeDBlHA-j7nUMfedW2-U7QUWpnWtsiIvH0meLGk2ukhJ6JtpuEIT7Nyq2nQd2bJyswAKsmAdzKwZwlu5pFA"/>
+<div class="absolute bottom-0 left-0 w-full bg-electric-blue text-white p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 border-t-2 border-primary">
+<span class="font-button-text text-button-text uppercase">Connect</span>
+<span class="material-symbols-outlined align-middle ml-2">arrow_forward</span>
+</div>
+</div>
+<h3 class="font-headline-md text-[32px] leading-none uppercase text-white mb-1 group-hover:text-electric-blue transition-colors">Elena Rostova</h3>
+<p class="font-label-caps text-label-caps text-vibrant-yellow">Head of Operations</p>
+</div>
+<!-- Team Member 3 -->
+<div class="group cursor-pointer">
+<div class="w-full aspect-[3/4] bg-primary-container border-2 border-vibrant-yellow mb-6 relative overflow-hidden">
+<img alt="High-contrast, bold portrait of a distinguished male executive in stylish business wear. He is looking directly at the camera with a serious, focused expression. The lighting is stark and cinematic, set against a vibrant, energetic background color." class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="High-contrast, bold portrait of a distinguished male executive in stylish business wear. He is looking directly at the camera with a serious, focused expression. The lighting is stark and cinematic, set against a vibrant, energetic background color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkJFjhFwGLkZ2xnSQPvZlPP4l6MKiIqLDg2RzVqdjaw1l5XiYY2RFSNdoLhBobTTymazVqbgMQfv3F6hqK-REIcu2pAImcuOj6lb3Fmi5gRpx_QrqxC65jCe2nZEpwf59_uzZGTthWVrBKMtue7pPrcBUflHPRLwFeD0MabQCmuVMPQfcQL9VJyejWa3QBhDtGkt5_nGrhWJksstcC-la_xRAJRh91FjPeunDpgXICPEGQN0W0XQ01M58YOiGvsvtnhFYPi6q-Ap4"/>
+<div class="absolute bottom-0 left-0 w-full bg-vibrant-yellow text-primary p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 border-t-2 border-primary">
+<span class="font-button-text text-button-text uppercase">Connect</span>
+<span class="material-symbols-outlined align-middle ml-2">arrow_forward</span>
+</div>
+</div>
+<h3 class="font-headline-md text-[32px] leading-none uppercase text-white mb-1 group-hover:text-vibrant-yellow transition-colors">David Chen</h3>
+<p class="font-label-caps text-label-caps text-electric-blue">Chief Quality Officer</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Accreditations & Standards -->
+<section class="px-margin-safe max-w-[1440px] mx-auto mb-section-gap">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase mb-4">Uncompromised Standards</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">We don't just meet industry benchmarks; we define them. Our facilities and processes carry the world's most rigorous certifications.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Accreditation 1 -->
+<div class="flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:bg-vibrant-yellow transition-colors duration-300 group">
+<span class="material-symbols-outlined text-[64px] text-primary mb-4" style="font-variation-settings: 'FILL' 0;">verified</span>
+<h4 class="font-headline-md text-[24px] text-primary uppercase text-center">ISO 22000</h4>
+<p class="font-label-caps text-label-caps text-primary/70 mt-2 text-center group-hover:text-primary">Food Safety</p>
+</div>
+<!-- Accreditation 2 -->
+<div class="flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:bg-electric-blue hover:text-white transition-colors duration-300 group">
+<span class="material-symbols-outlined text-[64px] text-primary group-hover:text-white mb-4" style="font-variation-settings: 'FILL' 0;">workspace_premium</span>
+<h4 class="font-headline-md text-[24px] text-primary group-hover:text-white uppercase text-center">HACCP</h4>
+<p class="font-label-caps text-label-caps text-primary/70 mt-2 text-center group-hover:text-white/80">Hazard Analysis</p>
+</div>
+<!-- Accreditation 3 -->
+<div class="flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:bg-vibrant-yellow transition-colors duration-300 group">
+<span class="material-symbols-outlined text-[64px] text-primary mb-4" style="font-variation-settings: 'FILL' 0;">compost</span>
+<h4 class="font-headline-md text-[24px] text-primary uppercase text-center">BRCGS</h4>
+<p class="font-label-caps text-label-caps text-primary/70 mt-2 text-center group-hover:text-primary">Global Standard</p>
+</div>
+<!-- Accreditation 4 -->
+<div class="flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,38,26,1)] hover:bg-electric-blue hover:text-white transition-colors duration-300 group">
+<span class="material-symbols-outlined text-[64px] text-primary group-hover:text-white mb-4" style="font-variation-settings: 'FILL' 0;">handshake</span>
+<h4 class="font-headline-md text-[24px] text-primary group-hover:text-white uppercase text-center">Fair Trade</h4>
+<p class="font-label-caps text-label-caps text-primary/70 mt-2 text-center group-hover:text-white/80">Ethical Sourcing</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container relative w-full pt-section-gap pb-gutter overflow-hidden bg-primary dark:bg-primary-container border-t-4 border-vibrant-yellow">
+<!-- Brand Logo Background -->
+<div class="font-display-xl text-display-xl text-vibrant-yellow dark:text-vibrant-yellow opacity-20 absolute -top-12 left-0 select-none pointer-events-none">GRYNE</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-safe max-w-[1440px] mx-auto relative z-10">
+<!-- Left Column: Branding & Copyright -->
+<div class="col-span-1 md:col-span-6 flex flex-col justify-end">
+<h2 class="font-headline-lg text-headline-lg uppercase mb-4">Bold By Nature.</h2>
+<p class="font-body-md text-body-md text-on-primary/80 mb-8 max-w-md">Premium wholesale cashew supply. Traced from origin, crafted for excellence.</p>
+<div class="font-label-caps text-label-caps text-vibrant-yellow font-bold uppercase tracking-widest mt-auto">
+                    © 2024 GRYNE CASHEWS. BOLD BY NATURE.
+                </div>
+</div>
+<!-- Right Column: Links -->
+<div class="col-span-1 md:col-span-6 flex flex-col md:items-end justify-end">
+<nav class="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 md:mb-0">
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300 uppercase tracking-wide" href="#">Supply Chain</a>
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300 uppercase tracking-wide" href="#">Team</a>
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300 uppercase tracking-wide" href="#">Accreditations</a>
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300 uppercase tracking-wide" href="#">Impact</a>
+<a class="font-button-text text-button-text text-on-primary/80 dark:text-on-primary-container/80 hover:text-vibrant-yellow hover:scale-105 transition-transform duration-300 uppercase tracking-wide" href="#">Privacy Policy</a>
+</nav>
+</div>
+</div>
+</footer>
+</body></html>
