@@ -4,6 +4,8 @@ import { InquiryProvider } from "@/context/inquiry-context";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 import WholesaleInquiryModal from "@/components/wholesale-inquiry-modal";
+import { Providers } from "@/components/providers";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 // Configure Anton Font
@@ -52,14 +54,18 @@ export default function RootLayout({
       className={`${anton.variable} ${hanken.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-on-background selection:bg-electric-blue selection:text-white">
-        <InquiryProvider>
-          <NavBar />
-          <main className="flex-grow pt-[84px]">
-            {children}
-          </main>
-          <Footer />
-          <WholesaleInquiryModal />
-        </InquiryProvider>
+        {/* Providers wraps only the client-side subtree — layout stays a Server Component */}
+        <Providers>
+          <InquiryProvider>
+            <NavBar />
+            <main className="flex-grow pt-[84px]">
+              {children}
+            </main>
+            <Footer />
+            <WholesaleInquiryModal />
+            <Toaster />
+          </InquiryProvider>
+        </Providers>
       </body>
     </html>
   );
