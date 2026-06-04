@@ -100,10 +100,10 @@ const team = [
 ];
 
 const accreditations = [
-  { title: "ISO 22000", desc: "Food Safety Management", icon: CheckCircle, hoverBg: "hover:bg-vibrant-yellow hover:text-primary" },
-  { title: "HACCP", desc: "Hazard Analysis & Critical Control", icon: ShieldCheck, hoverBg: "hover:bg-electric-blue hover:text-white" },
-  { title: "BRCGS", desc: "Global Food Safety Standard", icon: Award, hoverBg: "hover:bg-vibrant-yellow hover:text-primary" },
-  { title: "Fair Trade", desc: "Ethical & Fair Farm Compensation", icon: HeartHandshake, hoverBg: "hover:bg-electric-blue hover:text-white" },
+  { title: "ISO 22000", desc: "Food Safety Management", icon: CheckCircle, hoverBg: "hover:bg-accent hover:border-accent", hoverIcon: "group-hover:text-on-accent", hoverText: "group-hover:text-on-accent", hoverSub: "group-hover:text-on-accent/80" },
+  { title: "HACCP", desc: "Hazard Analysis & Critical Control", icon: ShieldCheck, hoverBg: "hover:bg-primary hover:border-primary", hoverIcon: "group-hover:text-white", hoverText: "group-hover:text-white", hoverSub: "group-hover:text-white/80" },
+  { title: "BRCGS", desc: "Global Food Safety Standard", icon: Award, hoverBg: "hover:bg-accent hover:border-accent", hoverIcon: "group-hover:text-on-accent", hoverText: "group-hover:text-on-accent", hoverSub: "group-hover:text-on-accent/80" },
+  { title: "Fair Trade", desc: "Ethical & Fair Farm Compensation", icon: HeartHandshake, hoverBg: "hover:bg-primary hover:border-primary", hoverIcon: "group-hover:text-white", hoverText: "group-hover:text-white", hoverSub: "group-hover:text-white/80" },
 ];
 
 // ─── Extracted Components for Map Iteration ───────────────────────────────────
@@ -118,10 +118,10 @@ function TimelineCard({ step, i }: { step: { num: string; title: string; desc: s
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.15 }}
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
-      className="bg-surface-container p-6 border-2 border-primary shadow-[4px_4px_0px_0px_#00261a] flex flex-col justify-between"
+      className="bg-surface p-6 border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] flex flex-col justify-between"
     >
       <div>
-        <div className="w-10 h-10 bg-vibrant-yellow border-2 border-primary rounded-full flex items-center justify-center font-headline-md text-[20px] text-primary mb-6 md:-mt-10 shadow-[2px_2px_0px_0px_#00261a]">
+        <div className="w-10 h-10 bg-vibrant-yellow border-2 border-primary rounded-full flex items-center justify-center font-headline-md text-[20px] text-primary mb-6 md:-mt-10 shadow-[2px_2px_0px_0px_#3B28FF]">
           {step.num}
         </div>
         <h3 className="font-headline-md text-[24px] leading-none text-primary uppercase mb-3">
@@ -146,7 +146,7 @@ function TeamCard({ member, index }: { member: { name: string; role: string; img
       transition={{ duration: 0.6, delay: index * 0.15 }}
       className={`group cursor-pointer ${index === 1 ? "md:translate-y-12" : ""}`}
     >
-      <div className={`w-full aspect-[3/4] bg-primary-container border-2 ${member.color} mb-6 relative overflow-hidden`}>
+      <div className={`w-full aspect-[3/4] bg-surface border-2 ${member.color} mb-6 relative overflow-hidden`}>
         <Image
           src={member.img}
           alt={member.name}
@@ -173,7 +173,7 @@ function TeamCard({ member, index }: { member: { name: string; role: string; img
   );
 }
 
-function AccreditationCard({ item, i }: { item: { title: string; desc: string; icon: React.ComponentType<{ className?: string }>; hoverBg: string }; i: number }) {
+function AccreditationCard({ item, i }: { item: { title: string; desc: string; icon: React.ComponentType<{ className?: string }>; hoverBg: string; hoverIcon: string; hoverText: string; hoverSub: string }; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
   const Icon = item.icon;
@@ -184,11 +184,11 @@ function AccreditationCard({ item, i }: { item: { title: string; desc: string; i
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.5, delay: i * 0.1 }}
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className={`flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_#00261a] transition-all duration-300 group cursor-pointer ${item.hoverBg}`}
+      className={`flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] transition-all duration-300 group cursor-pointer ${item.hoverBg}`}
     >
-      <Icon className="w-16 h-16 text-primary group-hover:scale-110 transition-transform duration-300 mb-4" />
-      <h4 className="font-headline-md text-[24px] text-primary uppercase text-center group-hover:text-current">{item.title}</h4>
-      <p className="font-label-caps text-label-caps text-primary/70 mt-2 text-center text-xs group-hover:text-current">{item.desc}</p>
+      <Icon className={`w-16 h-16 text-primary ${item.hoverIcon} group-hover:scale-110 transition-all duration-300 mb-4`} />
+      <h4 className={`font-headline-md text-[24px] text-primary ${item.hoverText} uppercase text-center transition-colors duration-300`}>{item.title}</h4>
+      <p className={`font-label-caps text-label-caps text-primary/70 ${item.hoverSub} mt-2 text-center text-xs transition-colors duration-300`}>{item.desc}</p>
     </motion.div>
   );
 }
@@ -220,7 +220,7 @@ export default function AboutPage() {
       {/* ── 1. Hero ── */}
       <section className="relative min-h-[750px] flex items-center px-6 md:px-margin-safe max-w-[1440px] mx-auto overflow-hidden w-full">
         <div className="absolute right-[-5%] top-[10%] w-64 h-64 bg-secondary-container rounded-full opacity-50 blur-3xl animate-pulse" />
-        <div className="absolute left-[10%] bottom-[20%] w-48 h-48 bg-primary-fixed rounded-full opacity-50 blur-3xl animate-pulse" />
+        <div className="absolute left-[10%] bottom-[20%] w-48 h-48 bg-surface-alt rounded-full opacity-50 blur-3xl animate-pulse" />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full relative z-10 items-center">
           <motion.div
@@ -232,7 +232,7 @@ export default function AboutPage() {
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.5 }}
-              className="inline-block font-label-caps text-label-caps bg-vibrant-yellow text-primary px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#00261a]"
+              className="inline-block font-label-caps text-label-caps bg-primary text-on-primary px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#18FF00]"
             >
               OUR ORIGINS
             </motion.div>
@@ -253,7 +253,7 @@ export default function AboutPage() {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l-4 border-electric-blue pl-6 py-2 bg-surface-container/50 mt-8"
+              className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l-4 border-primary pl-6 py-2 bg-secondary-container mt-8"
             >
               We don&apos;t just source cashews. We trace the lineage of flavour from the vibrant red soils
               of Africa to the meticulous sorting tables of India. Gryne is a global journey of premium taste.
@@ -263,7 +263,7 @@ export default function AboutPage() {
 
         {/* Portrait image sliding in from right */}
         <motion.div
-          className="hidden lg:block absolute right-margin-safe bottom-24 w-[380px] h-[480px] border-4 border-primary shadow-[8px_8px_0px_0px_#00261a] overflow-hidden z-20 group"
+          className="hidden lg:block absolute right-margin-safe bottom-24 w-[380px] h-[480px] border-4 border-primary shadow-[8px_8px_0px_0px_#3B28FF] overflow-hidden z-20 group"
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -289,7 +289,7 @@ export default function AboutPage() {
           <motion.span
             variants={fadeLeft}
             transition={{ duration: 0.5 }}
-            className="font-label-caps text-label-caps bg-black text-white px-3 py-1 border-2 border-primary shadow-[2px_2px_0px_0px_#00261a] mb-4 inline-block"
+            className="font-label-caps text-label-caps bg-on-background text-background px-3 py-1 border-2 border-on-background shadow-[2px_2px_0px_0px_#3B28FF] mb-4 inline-block"
           >
             OPERATION STEPS
           </motion.span>
@@ -314,7 +314,7 @@ export default function AboutPage() {
 
       {/* ── 4. Team ── */}
       <section className="bg-primary text-on-primary py-section-gap relative overflow-hidden mb-section-gap w-full">
-        <div className="absolute -top-10 left-[-5%] font-display-xl text-[140px] md:text-[200px] text-surface-tint opacity-10 whitespace-nowrap select-none pointer-events-none">
+        <div className="absolute -top-10 left-[-5%] font-display-xl text-[140px] md:text-[200px] text-secondary opacity-10 whitespace-nowrap select-none pointer-events-none">
           THE CORE THE CORE
         </div>
 
@@ -329,7 +329,7 @@ export default function AboutPage() {
                 <br />of Gryne.
               </motion.h2>
             </div>
-            <motion.p variants={fadeRight} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg max-w-md text-primary-fixed-dim font-semibold">
+            <motion.p variants={fadeRight} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg max-w-md text-white/70 font-semibold">
               A syndicate of supply chain veterans, agricultural specialists, and market managers united by one obsession: uncompromising quality.
             </motion.p>
           </ScrollSection>
@@ -345,7 +345,7 @@ export default function AboutPage() {
       {/* ── 5. Accreditations ── */}
       <section id="accreditations" className="px-6 md:px-margin-safe max-w-[1440px] mx-auto mb-section-gap py-12 w-full">
         <ScrollSection className="text-center mb-16">
-          <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps bg-black text-white px-3 py-1 border-2 border-primary shadow-[2px_2px_0px_0px_#00261a] mb-4 inline-block">
+          <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps bg-on-background text-background px-3 py-1 border-2 border-on-background shadow-[2px_2px_0px_0px_#3B28FF] mb-4 inline-block">
             VERIFICATION
           </motion.span>
           <motion.h2 variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-primary uppercase mb-4">
@@ -367,7 +367,7 @@ export default function AboutPage() {
       <section className="bg-vibrant-yellow border-t-4 border-b-4 border-primary w-full py-section-gap overflow-hidden">
         <div className="px-6 md:px-margin-safe max-w-[1440px] mx-auto w-full mb-16">
           <ScrollSection className="text-center">
-            <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps bg-primary text-on-primary px-3 py-1 border-2 border-primary shadow-[2px_2px_0px_0px_#000] mb-4 inline-block">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps bg-primary text-on-primary px-3 py-1 border-2 border-primary shadow-[2px_2px_0px_0px_#3B28FF] mb-4 inline-block">
               OUR CLIENTS
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-primary uppercase mb-4">
@@ -386,7 +386,7 @@ export default function AboutPage() {
               {[...Array(2)].flatMap((_, ri) =>
                 ["NOURISH CO.", "ALPINE NUTS", "TERRA EATS", "PEAK HARVEST", "SAVEUR FINE FOODS", "GROVE SUPPLY", "BULK & BEYOND", "PREMIER PANTRY"].map(
                   (brand) => (
-                    <div key={`${brand}-${ri}`} className="flex-shrink-0 bg-primary text-vibrant-yellow border-2 border-primary px-8 py-4 font-headline-md text-[24px] uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+                    <div key={`${brand}-${ri}`} className="flex-shrink-0 bg-primary text-vibrant-yellow border-2 border-primary px-8 py-4 font-headline-md text-[24px] uppercase shadow-[4px_4px_0px_0px_rgba(59,40,255,0.3)]">
                       {brand}
                     </div>
                   )
@@ -399,7 +399,7 @@ export default function AboutPage() {
               {[...Array(2)].flatMap((_, ri) =>
                 ["EPOCH FOODS", "GOLDEN KERNEL", "COAST & CORE", "VITANOVA", "HARVEST UNION", "TRUE TASTE", "ORIGIN PURE", "WILD ORCHARD"].map(
                   (brand) => (
-                    <div key={`${brand}-${ri}`} className="flex-shrink-0 bg-surface text-primary border-2 border-primary px-8 py-4 font-headline-md text-[24px] uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)]">
+                    <div key={`${brand}-${ri}`} className="flex-shrink-0 bg-surface text-primary border-2 border-primary px-8 py-4 font-headline-md text-[24px] uppercase shadow-[4px_4px_0px_0px_rgba(59,40,255,0.3)]">
                       {brand}
                     </div>
                   )
@@ -422,7 +422,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="bg-primary text-on-primary border-2 border-primary p-8 text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)]"
+                className="bg-primary text-on-primary border-2 border-primary p-8 text-center shadow-[6px_6px_0px_0px_rgba(59,40,255,0.3)]"
               >
                 <p className="font-display-xl text-[64px] leading-none text-vibrant-yellow mb-2">{stat.num}</p>
                 <p className="font-label-caps text-label-caps text-on-primary/70 text-xs">{stat.label}</p>

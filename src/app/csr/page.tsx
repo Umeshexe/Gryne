@@ -58,10 +58,10 @@ function PillarCard({ pillar, i }: { pillar: { title: string; desc: string; icon
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.12 }}
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
-      className={`bg-primary-container border-2 border-primary-fixed p-6 shadow-[4px_4px_0px_0px_rgba(162,209,187,0.3)] flex flex-col justify-between transition-colors duration-300 cursor-pointer group ${pillar.hoverBg}`}
+      className={`bg-surface border-2 border-secondary p-6 shadow-[4px_4px_0px_0px_rgba(59,40,255,0.15)] flex flex-col justify-between transition-colors duration-300 cursor-pointer group ${pillar.hoverBg}`}
     >
       <div>
-        <div className="w-12 h-12 bg-vibrant-yellow border-2 border-primary flex items-center justify-center font-display-xl text-[20px] text-primary shadow-[2px_2px_0px_0px_#000] mb-6 group-hover:scale-110 transition-transform">
+        <div className="w-12 h-12 bg-vibrant-yellow border-2 border-primary flex items-center justify-center font-display-xl text-[20px] text-primary shadow-[2px_2px_0px_0px_#3B28FF] mb-6 group-hover:scale-110 transition-transform">
           <Icon className="w-6 h-6 text-primary" />
         </div>
         <h3 className="font-headline-md text-[24px] leading-none text-white uppercase mb-4 group-hover:text-current">{pillar.title}</h3>
@@ -174,7 +174,7 @@ export default function CSRPage() {
             variants={fadeLeft}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className="inline-block px-4 py-1 border-2 border-primary bg-vibrant-yellow font-label-caps text-label-caps text-primary mb-6 shadow-[2px_2px_0px_0px_rgba(0,38,26,1)] uppercase">
+            <span className="inline-block px-4 py-1 border-2 border-primary bg-vibrant-yellow font-label-caps text-label-caps text-primary mb-6 shadow-[2px_2px_0px_0px_rgba(59,40,255,1)] uppercase">
               Impact Report
             </span>
             {["ROOTED", "IN", "RESPONSIBILITY"].map((line, i) => (
@@ -198,7 +198,7 @@ export default function CSRPage() {
             <motion.button
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
               onClick={openInquiry}
-              className="font-button-text text-button-text text-on-primary bg-primary border-2 border-primary px-8 py-4 hover:bg-electric-blue hover:border-electric-blue transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(46,91,255,1)] cursor-pointer"
+              className="font-button-text text-button-text text-on-primary bg-primary border-2 border-primary px-8 py-4 hover:bg-electric-blue hover:border-electric-blue transition-colors duration-300 shadow-[4px_4px_0px_0px_rgba(24,255,0,1)] cursor-pointer"
             >
               READ OUR MISSION
             </motion.button>
@@ -210,7 +210,7 @@ export default function CSRPage() {
             variants={fadeRight}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="aspect-[4/5] bg-secondary-container border-4 border-primary overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,38,26,1)] relative z-0 group">
+            <div className="aspect-[4/5] bg-secondary-container border-4 border-primary overflow-hidden shadow-[8px_8px_0px_0px_rgba(59,40,255,1)] relative z-0 group">
               <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs"
                 alt="Farmer holding cashews"
@@ -236,7 +236,7 @@ export default function CSRPage() {
             <motion.h2 variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-headline-lg text-[40px] leading-tight md:text-headline-lg uppercase text-white mb-6">
               Our Core Sustainability Pillars
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg text-primary-fixed-dim">
+            <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg text-white/70">
               We leverage modern infrastructure alongside regenerative practices, creating a balanced pipeline that values organic farmers and climate action.
             </motion.p>
           </ScrollSection>
@@ -253,7 +253,7 @@ export default function CSRPage() {
       <section className="max-w-[1440px] mx-auto px-6 md:px-margin-safe py-section-gap w-full">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
           <ScrollSection className="md:col-span-5 flex flex-col justify-center">
-            <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps bg-black text-white px-4 py-2 inline-block self-start mb-6 sticker hard-shadow">
+            <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps bg-on-background text-background px-4 py-2 inline-block self-start mb-6 shadow-[2px_2px_0px_0px_#3B28FF]">
               VERIFIED IMPACT
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-headline-lg text-[40px] leading-tight md:text-headline-lg text-primary uppercase mb-6">

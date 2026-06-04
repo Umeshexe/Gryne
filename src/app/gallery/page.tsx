@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useRef, useState, useCallback } from "react";
 import Image from "next/image";
@@ -92,7 +92,7 @@ function GalleryCard({
       transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
       whileHover={{ y: -6 }}
       onClick={onClick}
-      className={`relative ${heightClass} border-2 border-primary shadow-[4px_4px_0px_0px_#00261a] overflow-hidden group cursor-pointer bg-secondary-container`}
+      className={`relative ${heightClass} border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden group cursor-pointer bg-secondary-container`}
     >
       <Image
         src={img.src}
@@ -239,7 +239,7 @@ export default function GalleryPage() {
           <motion.div
             variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.4 }}
-            className="inline-block font-label-caps text-label-caps bg-black text-white px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#00261a]"
+            className="inline-block font-label-caps text-label-caps bg-black text-white px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#3B28FF]"
           >
             VISUAL ARCHIVE
           </motion.div>
@@ -281,8 +281,8 @@ export default function GalleryPage() {
               whileTap={{ y: 1 }}
               className={`font-label-caps text-label-caps text-xs px-4 py-2 border-2 border-primary transition-all duration-200 cursor-pointer ${
                 activeTag === tag
-                  ? "bg-primary text-on-primary shadow-[3px_3px_0px_0px_#FFD600]"
-                  : "bg-surface text-primary hover:bg-primary/10 shadow-[3px_3px_0px_0px_#00261a]"
+                  ? "bg-primary text-on-primary shadow-[3px_3px_0px_0px_#18FF00]"
+                  : "bg-surface text-primary hover:bg-primary/10 shadow-[3px_3px_0px_0px_#3B28FF]"
               }`}
             >
               {tag}

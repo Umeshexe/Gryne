@@ -100,7 +100,7 @@ function PostCard({ post, index }: { post: (typeof posts)[0]; index: number }) {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
       whileHover={{ y: -6 }}
-      className="group border-2 border-primary shadow-[4px_4px_0px_0px_#00261a] bg-surface flex flex-col overflow-hidden"
+      className="group border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] bg-surface flex flex-col overflow-hidden"
     >
       {/* Image */}
       <div className="relative h-[200px] overflow-hidden border-b-2 border-primary">
@@ -176,7 +176,7 @@ export default function BlogPage() {
         >
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="inline-block font-label-caps text-label-caps bg-electric-blue text-white px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#000]"
+            className="inline-block font-label-caps text-label-caps bg-electric-blue text-white px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#3B28FF]"
           >
             KNOWLEDGE HUB
           </motion.div>
@@ -217,7 +217,7 @@ export default function BlogPage() {
       >
         <p className="font-label-caps text-label-caps text-primary/60 mb-6">FEATURED ARTICLE</p>
         <Link href={`/blog/${featured.slug}`} className="group block">
-          <div className="grid grid-cols-1 lg:grid-cols-2 border-4 border-primary shadow-[8px_8px_0px_0px_#00261a] overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 border-4 border-primary shadow-[8px_8px_0px_0px_#3B28FF] overflow-hidden">
             {/* Image */}
             <div className="relative h-[320px] lg:h-full min-h-[320px] border-b-4 lg:border-b-0 lg:border-r-4 border-primary overflow-hidden">
               <Image
@@ -250,7 +250,7 @@ export default function BlogPage() {
                 </h2>
                 <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">{featured.excerpt}</p>
               </div>
-              <div className="inline-flex items-center gap-2 font-button-text text-button-text text-primary border-2 border-primary px-6 py-3 w-fit shadow-[4px_4px_0px_0px_#FFD600] hover:bg-primary hover:text-on-primary transition-all duration-200 group-hover:shadow-[2px_2px_0px_0px_#FFD600]">
+              <div className="inline-flex items-center gap-2 font-button-text text-button-text text-primary border-2 border-primary px-6 py-3 w-fit shadow-[4px_4px_0px_0px_#18FF00] hover:bg-primary hover:text-on-primary transition-all duration-200 group-hover:shadow-[2px_2px_0px_0px_#18FF00]">
                 READ FULL ARTICLE <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
               </div>
             </div>
@@ -271,8 +271,8 @@ export default function BlogPage() {
               whileTap={{ y: 1 }}
               className={`font-label-caps text-label-caps text-xs px-4 py-2 border-2 border-primary cursor-pointer transition-all duration-200 ${
                 activeCategory === cat
-                  ? "bg-primary text-on-primary shadow-[3px_3px_0px_0px_#FFD600]"
-                  : "bg-surface text-primary hover:bg-primary/10 shadow-[3px_3px_0px_0px_#00261a]"
+                  ? "bg-primary text-on-primary shadow-[3px_3px_0px_0px_#18FF00]"
+                  : "bg-surface text-primary hover:bg-primary/10 shadow-[3px_3px_0px_0px_#3B28FF]"
               }`}
             >
               {cat}

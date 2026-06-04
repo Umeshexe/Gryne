@@ -58,14 +58,14 @@ function ChainStepCard({ step, i }: { step: { num: string; title: string; locati
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.15 }}
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
-      className="bg-primary-container border-2 border-primary-fixed p-6 shadow-[4px_4px_0px_0px_rgba(162,209,187,0.3)] flex flex-col justify-between"
+      className="bg-surface border-2 border-secondary p-6 shadow-[4px_4px_0px_0px_rgba(59,40,255,0.15)] flex flex-col justify-between"
     >
       <div>
         <div className="flex justify-between items-start mb-6">
-          <div className="w-12 h-12 bg-vibrant-yellow border-2 border-primary flex items-center justify-center font-display-xl text-[20px] text-primary shadow-[2px_2px_0px_0px_#000]">
+          <div className="w-12 h-12 bg-vibrant-yellow border-2 border-primary flex items-center justify-center font-display-xl text-[20px] text-primary shadow-[2px_2px_0px_0px_#3B28FF]">
             <Icon className="w-6 h-6 text-primary" />
           </div>
-          <span className="font-headline-md text-3xl text-surface-tint opacity-30 select-none">{step.num}</span>
+          <span className="font-headline-md text-3xl text-secondary opacity-30 select-none">{step.num}</span>
         </div>
         <h3 className="font-headline-md text-[24px] leading-none text-white uppercase mb-1">{step.title}</h3>
         <span className="font-label-caps text-xs text-electric-blue block mb-4">{step.location}</span>
@@ -162,7 +162,7 @@ export default function BusinessPage() {
             variants={fadeLeft}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className="inline-block bg-vibrant-yellow text-primary font-label-caps text-label-caps px-4 py-1 sticker mb-6 uppercase shadow-[2px_2px_0px_0px_#00261a]">
+            <span className="inline-block bg-vibrant-yellow text-primary font-label-caps text-label-caps px-4 py-1 sticker mb-6 uppercase shadow-[2px_2px_0px_0px_#3B28FF]">
               Business Operations
             </span>
             <h1 className="font-display-xl text-[56px] leading-[54px] md:text-headline-lg text-primary uppercase leading-none mb-6">
@@ -194,7 +194,7 @@ export default function BusinessPage() {
             />
             {/* Framer Motion parallax badge */}
             <motion.div
-              className="absolute -right-4 -bottom-4 md:-right-8 md:-bottom-8 w-24 h-24 md:w-32 md:h-32 bg-vibrant-yellow rounded-full flex flex-col items-center justify-center border-4 border-primary shadow-[6px_6px_0px_0px_rgba(0,38,26,1)] z-20 pointer-events-none select-none"
+              className="absolute -right-4 -bottom-4 md:-right-8 md:-bottom-8 w-24 h-24 md:w-32 md:h-32 bg-vibrant-yellow rounded-full flex flex-col items-center justify-center border-4 border-primary shadow-[6px_6px_0px_0px_rgba(59,40,255,1)] z-20 pointer-events-none select-none"
               animate={{ rotate: [0, 5, -5, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -216,7 +216,7 @@ export default function BusinessPage() {
             <motion.h2 variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-headline-lg text-[44px] leading-tight md:text-headline-lg uppercase text-white mb-6">
               Our Vertically Integrated Pipeline
             </motion.h2>
-            <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg text-primary-fixed-dim">
+            <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg text-white/70">
               By owning the sourcing, shipping, and milling operations, we guarantee structural safety, fair labor practices, and flawless product grading.
             </motion.p>
           </ScrollSection>
@@ -237,7 +237,7 @@ export default function BusinessPage() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto p-12 bg-canvas-cream border-4 border-primary hard-shadow relative"
           >
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-electric-blue text-white font-label-caps text-xs px-4 py-2 border-2 border-primary shadow-[2px_2px_0px_0px_#000]">
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-electric-blue text-white font-label-caps text-xs px-4 py-2 border-2 border-primary shadow-[2px_2px_0px_0px_#3B28FF]">
               B2B WHOLESALE SPECIFICATIONS
             </div>
             <h2 className="font-headline-lg text-[36px] md:text-[52px] leading-none text-primary uppercase mt-4 mb-6">

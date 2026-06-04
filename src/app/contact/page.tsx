@@ -50,7 +50,7 @@ function FormField({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="font-label-caps text-label-caps text-primary text-xs">{label}</label>
+      <label className="font-label-caps text-label-caps text-on-surface-variant text-xs">{label}</label>
       {children}
       <AnimatePresence>
         {error && (
@@ -90,7 +90,7 @@ function DetailCard({
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className={`flex items-start gap-4 p-5 border-2 border-primary shadow-[4px_4px_0px_0px_#00261a] bg-surface group cursor-default ${accent}`}
+      className={`flex items-start gap-4 p-5 border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] bg-surface group cursor-default ${accent}`}
     >
       <div className="w-10 h-10 bg-vibrant-yellow border-2 border-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-300">
         <Icon className="w-5 h-5 text-primary group-hover:text-vibrant-yellow transition-colors duration-300" />
@@ -98,7 +98,7 @@ function DetailCard({
       <div>
         <p className="font-label-caps text-label-caps text-primary/60 text-xs mb-1">{title}</p>
         {lines.map((line) => (
-          <p key={line} className="font-body-md text-body-md text-primary font-semibold leading-tight">
+          <p key={line} className="font-body-md text-body-md text-on-background font-semibold leading-tight">
             {line}
           </p>
         ))}
@@ -134,7 +134,7 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    "w-full border-2 border-primary bg-surface px-4 py-3 font-body-md text-primary placeholder:text-primary/40 focus:outline-none focus:border-electric-blue focus:shadow-[0_0_0_3px_rgba(46,91,255,0.15)] transition-all duration-200";
+    "w-full border-2 border-primary bg-surface px-4 py-3 font-body-md text-on-background placeholder:text-on-surface-variant focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(59,40,255,0.15)] transition-all duration-200";
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -155,7 +155,7 @@ export default function ContactPage() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.4 }}
-            className="inline-block font-label-caps text-label-caps bg-vibrant-yellow text-primary px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#00261a]"
+            className="inline-block font-label-caps text-label-caps bg-vibrant-yellow text-primary px-3 py-1 border-2 border-primary mb-6 shadow-[2px_2px_0px_0px_#3B28FF]"
           >
             GET IN TOUCH
           </motion.div>
@@ -175,7 +175,7 @@ export default function ContactPage() {
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="font-body-lg text-body-lg text-on-surface-variant max-w-xl mt-6 border-l-4 border-electric-blue pl-6 bg-surface-container/50 py-2"
+            className="font-body-lg text-body-lg text-on-surface-variant max-w-xl mt-6 border-l-4 border-electric-blue pl-6 bg-surface/50 py-2"
           >
             Partner with us, ask about grades and pricing, or simply drop a line.
             We respond to all serious wholesale inquiries within 24 hours.
@@ -199,8 +199,8 @@ export default function ContactPage() {
             variants={fadeLeft}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="border-4 border-primary shadow-[8px_8px_0px_0px_#00261a] p-8 md:p-12 bg-canvas-cream relative">
-              <div className="absolute -top-5 left-8 bg-electric-blue text-white font-label-caps text-xs px-4 py-2 border-2 border-primary shadow-[2px_2px_0px_0px_#000]">
+            <div className="border-4 border-primary shadow-[8px_8px_0px_0px_#3B28FF] p-8 md:p-12 bg-canvas-cream relative">
+              <div className="absolute -top-5 left-8 bg-electric-blue text-white font-label-caps text-xs px-4 py-2 border-2 border-primary shadow-[2px_2px_0px_0px_#3B28FF]">
                 SEND A MESSAGE
               </div>
 
@@ -275,7 +275,7 @@ export default function ContactPage() {
                       disabled={isSubmitting}
                       whileHover={!isSubmitting ? { x: 2, y: 2 } : {}}
                       whileTap={!isSubmitting ? { x: 4, y: 4 } : {}}
-                      className="w-full md:w-auto self-start bg-primary text-on-primary font-button-text text-button-text px-10 py-4 border-2 border-primary shadow-[4px_4px_0px_0px_#FFD600] hover:bg-electric-blue transition-all duration-200 inline-flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                      className="w-full md:w-auto self-start bg-primary text-on-primary font-button-text text-button-text px-10 py-4 border-2 border-primary shadow-[4px_4px_0px_0px_#18FF00] hover:bg-electric-blue transition-all duration-200 inline-flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                     >
                       {isSubmitting ? (
                         <>
@@ -335,7 +335,7 @@ export default function ContactPage() {
             />
 
             {/* Map Embed */}
-            <div className="w-full h-[220px] border-2 border-primary shadow-[4px_4px_0px_0px_#00261a] overflow-hidden relative">
+            <div className="w-full h-[220px] border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden relative">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125434.00534707!2d76.5374!3d8.8932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05f8a4a4d2cd45%3A0x38fc2e16f3c16cae!2sKollam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000"
                 width="100%"
@@ -361,7 +361,7 @@ export default function ContactPage() {
                   aria-label={label}
                   whileHover={{ y: -3, x: 1 }}
                   whileTap={{ y: 1 }}
-                  className="w-10 h-10 border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors duration-200 shadow-[2px_2px_0px_0px_#FFD600]"
+                  className="w-10 h-10 border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-200 shadow-[2px_2px_0px_0px_#18FF00]"
                 >
                   <Icon className="w-4 h-4" />
                 </motion.a>
@@ -387,7 +387,7 @@ export default function ContactPage() {
             >
               <p className="font-label-caps text-label-caps text-vibrant-yellow mb-2">{item.label}</p>
               <p className="font-headline-md text-[28px] uppercase text-white mb-1">{item.value}</p>
-              <p className="font-body-md text-body-md text-primary-fixed-dim">{item.sub}</p>
+              <p className="font-body-md text-body-md text-white/70">{item.sub}</p>
             </motion.div>
           ))}
         </ScrollSection>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -230,7 +230,7 @@ export default function WholesaleInquiryModal() {
                       disabled={isPending}
                       whileHover={{ x: 2, y: 2 }}
                       whileTap={{ x: 4, y: 4 }}
-                      className="mt-2 w-full flex items-center justify-center gap-3 font-button-text text-button-text bg-primary text-white border-2 border-primary py-4 shadow-[4px_4px_0px_0px_rgba(46,91,255,1)] hover:bg-electric-blue transition-colors duration-300 disabled:opacity-60 cursor-pointer"
+                      className="mt-2 w-full flex items-center justify-center gap-3 font-button-text text-button-text bg-primary text-white border-2 border-primary py-4 shadow-[4px_4px_0px_0px_rgba(24,255,0,1)] hover:bg-electric-blue transition-colors duration-300 disabled:opacity-60 cursor-pointer"
                     >
                       {isPending ? (
                         <>

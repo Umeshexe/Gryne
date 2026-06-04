@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Toaster as Sonner } from "sonner";
 
@@ -14,13 +14,13 @@ export function Toaster() {
       toastOptions={{
         classNames: {
           toast:
-            "font-mono text-sm border-2 border-primary rounded-none shadow-[4px_4px_0px_0px_#00261a] bg-canvas-cream text-primary",
+            "font-mono text-sm border-2 border-primary rounded-none shadow-[4px_4px_0px_0px_#3B28FF] bg-canvas-cream text-primary",
           title: "font-bold uppercase tracking-wide",
           description: "text-on-surface-variant text-xs mt-1",
           success:
-            "!bg-vibrant-yellow !text-primary !border-primary shadow-[4px_4px_0px_0px_#00261a]",
+            "!bg-vibrant-yellow !text-primary !border-primary shadow-[4px_4px_0px_0px_#3B28FF]",
           error:
-            "!bg-primary !text-on-primary !border-vibrant-yellow shadow-[4px_4px_0px_0px_#FFD600]",
+            "!bg-primary !text-on-primary !border-vibrant-yellow shadow-[4px_4px_0px_0px_#18FF00]",
           loading: "!bg-electric-blue !text-white !border-primary",
         },
       }}

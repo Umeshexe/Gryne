@@ -224,7 +224,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
                 {para}
               </p>
               {i === Math.floor(article.body.length / 2) - 1 && (
-                <blockquote className="my-12 border-l-8 border-vibrant-yellow pl-8 pr-6 py-6 bg-primary text-on-primary shadow-[6px_6px_0px_0px_#FFD600]">
+                <blockquote className="my-12 border-l-8 border-vibrant-yellow pl-8 pr-6 py-6 bg-primary text-on-primary shadow-[6px_6px_0px_0px_#18FF00]">
                   <p className="font-headline-md text-[22px] md:text-[28px] leading-tight text-white uppercase">
                     &ldquo;{article.pullQuote}&rdquo;
                   </p>
@@ -254,7 +254,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group border-2 border-primary shadow-[4px_4px_0px_0px_#00261a] bg-surface overflow-hidden flex flex-col hover:shadow-[2px_2px_0px_0px_#00261a] transition-all duration-200"
+                  className="group border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] bg-surface overflow-hidden flex flex-col hover:shadow-[2px_2px_0px_0px_#3B28FF] transition-all duration-200"
                 >
                   <div className="relative h-[180px] overflow-hidden border-b-2 border-primary">
                     <Image
