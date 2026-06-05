@@ -155,6 +155,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
           alt={article.title}
           fill
           className="object-cover filter contrast-110 brightness-75"
+          sizes="100vw"
           priority
         />
         {/* Overlay */}

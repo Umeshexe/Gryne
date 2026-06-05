@@ -52,6 +52,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${anton.variable} ${hanken.variable} ${spaceMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-on-background selection:bg-electric-blue selection:text-white">
         {/* Providers wraps only the client-side subtree — layout stays a Server Component */}

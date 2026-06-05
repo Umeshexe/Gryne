@@ -216,6 +216,7 @@ export default function CSRPage() {
                 alt="Farmer holding cashews"
                 fill
                 className="object-cover filter brightness-105 group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 500px"
               />
               <div className="absolute bottom-4 left-4 font-label-caps text-[10px] bg-black text-white px-3 py-1 border-2 border-white">
                 ORIGIN: WEST AFRICA
