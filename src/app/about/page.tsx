@@ -151,6 +151,7 @@ function TeamCard({ member, index }: { member: { name: string; role: string; img
           src={member.img}
           alt={member.name}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
         />
         <motion.div
@@ -272,6 +273,7 @@ export default function AboutPage() {
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA0QzyHvwRE3lk4qZREnjTGywVrGhNJkr4S4vtYH8hCJCWytPhJdjqi9Q8cjbKXnH8IALGegW4y0yOpXmRMZR1pMfkMMu6rE9Gwy1_9fe-8kThpDhKRMjtgnByu6UbaGb7dgSEQlBxYnh2oDkiCYIpAKrKB3DkqYwHDHv8oSwQ5MQkn6CM3w6FAxfSHGa73MAhAhVefxyAnBgohKnb384tms-llGR7VeUIA-W8fZVPu9Ecd2-rUQBmGYQ0kItnC1DcVMJ0rp0LnBA"
             alt="Cashew origin branch"
             fill
+            sizes="(max-width: 768px) 100vw, 380px"
             className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-125"
           />
           <div className="absolute bottom-4 left-4 font-label-caps text-label-caps bg-black text-white px-3 py-1 border-2 border-white text-xs">
