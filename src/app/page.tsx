@@ -227,7 +227,7 @@ function OceanJourney() {
             <p className="font-headline-md text-[22px] md:text-headline-md text-white tracking-[0.15em] uppercase leading-none">
               INDIA
             </p>
-            <p className="font-label-caps text-[10px] text-accent/80 tracking-widest mt-1">KOLLAM PORT</p>
+            <p className="font-label-caps text-[10px] text-accent/80 tracking-widest mt-1">VIZAG PORT</p>
           </motion.div>
 
           {/* Ship */}

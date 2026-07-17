@@ -22,6 +22,9 @@ export const inquirySchema = z.object({
     .string()
     .min(10, "Please describe your requirements (minimum 10 characters)")
     .max(1000, "Message too long"),
+  // Honeypot fields (hidden fields to trap spambots)
+  website: z.string().optional(),
+  fax: z.string().optional(),
 });
 
 // Infer the TypeScript type from the schema directly

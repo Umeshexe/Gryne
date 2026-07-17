@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import WholesaleInquiryModal from "@/components/wholesale-inquiry-modal";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
+import SmoothScroll from "@/components/layout/smooth-scroll";
 import "./globals.css";
 
 // Configure Anton Font
@@ -57,15 +58,17 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-on-background selection:bg-electric-blue selection:text-white">
         {/* Providers wraps only the client-side subtree — layout stays a Server Component */}
         <Providers>
-          <InquiryProvider>
-            <NavBar />
-            <main className="flex-grow pt-[84px]">
-              {children}
-            </main>
-            <Footer />
-            <WholesaleInquiryModal />
-            <Toaster />
-          </InquiryProvider>
+          <SmoothScroll>
+            <InquiryProvider>
+              <NavBar />
+              <main className="flex-grow pt-[84px]">
+                {children}
+              </main>
+              <Footer />
+              <WholesaleInquiryModal />
+              <Toaster />
+            </InquiryProvider>
+          </SmoothScroll>
         </Providers>
       </body>
     </html>

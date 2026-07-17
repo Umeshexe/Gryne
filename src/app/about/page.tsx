@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, CheckCircle, Award, HeartHandshake, ShieldCheck } from "lucide-react";
 import Marquee from "@/components/ui/marquee";
+import TiltCard from "@/components/ui/tilt-card";
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 
@@ -179,18 +180,19 @@ function AccreditationCard({ item, i }: { item: { title: string; desc: string; i
   const isInView = useInView(ref, { once: true, margin: "-40px" });
   const Icon = item.icon;
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.97 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.5, delay: i * 0.1 }}
-      whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className={`flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] transition-all duration-300 group cursor-pointer ${item.hoverBg}`}
-    >
-      <Icon className={`w-16 h-16 text-primary ${item.hoverIcon} group-hover:scale-110 transition-all duration-300 mb-4`} />
-      <h4 className={`font-headline-md text-[24px] text-primary ${item.hoverText} uppercase text-center transition-colors duration-300`}>{item.title}</h4>
-      <p className={`font-label-caps text-label-caps text-primary/70 ${item.hoverSub} mt-2 text-center text-xs transition-colors duration-300`}>{item.desc}</p>
-    </motion.div>
+    <TiltCard className="h-full">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40, scale: 0.97 }}
+        animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ duration: 0.5, delay: i * 0.1 }}
+        className={`flex flex-col items-center justify-center p-8 bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] transition-all duration-300 group cursor-pointer h-full ${item.hoverBg}`}
+      >
+        <Icon className={`w-16 h-16 text-primary ${item.hoverIcon} group-hover:scale-110 transition-all duration-300 mb-4`} />
+        <h4 className={`font-headline-md text-[24px] text-primary ${item.hoverText} uppercase text-center transition-colors duration-300`}>{item.title}</h4>
+        <p className={`font-label-caps text-label-caps text-primary/70 ${item.hoverSub} mt-2 text-center text-xs transition-colors duration-300`}>{item.desc}</p>
+      </motion.div>
+    </TiltCard>
   );
 }
 

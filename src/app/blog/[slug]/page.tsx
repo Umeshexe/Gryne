@@ -102,7 +102,7 @@ const articles: Record<string, {
       "ISO 22000:2018 is the international standard for food safety management systems. Unlike HACCP, which focuses solely on hazard analysis, ISO 22000 integrates HACCP principles with a broader quality management framework aligned to ISO 9001.",
       "For buyers, the certificate confirms that the facility has documented all food safety hazards, established validated critical control points, and undergoes annual third-party audits. It does not, however, guarantee product quality — that is the function of a separate Certificate of Analysis on every shipped lot.",
       "What many buyers overlook: ISO 22000 certification applies to a facility, not to a company. If your supplier processes cashews at multiple sites, ask for site-specific certificates. A central office certification covers administration, not production.",
-      "At Gryne, our Kollam processing facility has held ISO 22000:2018 certification continuously since 2019. Our last audit, conducted by Bureau Veritas in March 2025, identified zero major non-conformances.",
+      "At Gryne, our Visakhapatnam processing facility has held ISO 22000:2018 certification continuously since 2019. Our last audit, conducted by Bureau Veritas in March 2025, identified zero major non-conformances.",
     ],
     pullQuote: "ISO 22000 certification applies to a facility, not a company. Always ask for site-specific certificates.",
     related: ["understanding-cashew-grades", "gryne-csr-report-2024"],
@@ -117,7 +117,7 @@ const articles: Record<string, {
     authorRole: "Head of Operations, Gryne",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs",
     body: [
-      "In 2024, Gryne achieved 68% of its electricity consumption from renewable sources, primarily through the 450 kW solar array installed on our Kollam facility roof in Q2. This reduced our Scope 2 emissions by an estimated 420 tonnes of CO2e compared to 2023.",
+      "In 2024, Gryne achieved 68% of its electricity consumption from renewable sources, primarily through the 450 kW solar array installed on our Visakhapatnam facility roof in Q2. This reduced our Scope 2 emissions by an estimated 420 tonnes of CO2e compared to 2023.",
       "Our farmer outreach programme reached 1,247 smallholders across Ivory Coast and Guinea-Bissau, providing training on integrated pest management, post-harvest handling, and cooperative negotiation skills. Average income for participating farmers increased by 18% year-on-year.",
       "Water consumption per tonne of processed cashew dropped 22% following installation of a closed-loop shell liquid recovery system. Cashew Shell Liquid (CNSL) — a valuable industrial by-product — is now sold to resin manufacturers rather than incinerated.",
       "For 2025, our three priority commitments are: achieve 85% renewable electricity, eliminate single-use plastic from all export packaging, and extend our farmer outreach programme to Tanzania.",

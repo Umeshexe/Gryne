@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { useInquiry } from "@/context/inquiry-context";
 import { Menu, X } from "lucide-react";
 
@@ -12,6 +12,19 @@ export default function NavBar() {
   const pathname = usePathname();
   const { openInquiry } = useInquiry();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    // Hide navbar if scrolling down, show if scrolling up. Ensure it doesn't hide at the very top.
+    if (latest > previous && latest > 150 && !mobileMenuOpen) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   const navLinks = [
     { name: "Business", href: "/business" },
@@ -27,9 +40,12 @@ export default function NavBar() {
       <motion.nav
         className="fixed top-0 w-full z-50 border-b-4 border-primary"
         style={{ backgroundColor: "#E8C97A" }}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: "-105%", opacity: 0 },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
       >
         <div className="flex justify-between items-center px-6 md:px-gutter py-4 w-full max-w-[1440px] mx-auto">
           {/* Logo */}

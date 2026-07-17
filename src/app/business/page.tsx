@@ -89,7 +89,7 @@ const chainSteps = [
     icon: Truck,
   },
   {
-    num: "03", title: "Precision Milling", location: "Kollam, India",
+    num: "03", title: "Precision Milling", location: "Vizag, India",
     desc: "High-standard sorting mills combine robotic precision with human expertise to shell, grade, and verify each cashew kernel.",
     icon: Factory,
   },

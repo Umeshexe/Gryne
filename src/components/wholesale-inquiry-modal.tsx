@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -44,6 +44,8 @@ export default function WholesaleInquiryModal() {
       grade: "W240",
       volume: "10-50",
       message: "",
+      website: "",
+      fax: "",
     },
   });
 
@@ -132,6 +134,22 @@ export default function WholesaleInquiryModal() {
                   </h2>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5" noValidate>
+                    {/* Honeypot fields (traps automated spambots) */}
+                    <div className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden pointer-events-none opacity-0" aria-hidden="true">
+                      <input
+                        {...register("website")}
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                      <input
+                        {...register("fax")}
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
                     {/* Company Name */}
                     <div className="flex flex-col">
                       <label className="font-label-caps text-[12px] text-primary mb-1">

@@ -318,13 +318,13 @@ export default function ContactPage() {
             <DetailCard
               icon={MapPin}
               title="HEAD OFFICE"
-              lines={["Gryne International", "Industrial Estate, Kollam,", "Kerala, India — 691 001"]}
+              lines={["Gryne International", "Industrial Estate, Visakhapatnam,", "Andhra Pradesh, India — 530 007"]}
               accent=""
             />
             <DetailCard
               icon={Phone}
               title="PHONE"
-              lines={["+91 474 298 0000", "+91 98470 00000"]}
+              lines={["+91 891 298 0000", "+91 98470 00000"]}
               accent=""
             />
             <DetailCard
@@ -337,7 +337,7 @@ export default function ContactPage() {
             {/* Map Embed */}
             <div className="w-full h-[220px] border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125434.00534707!2d76.5374!3d8.8932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05f8a4a4d2cd45%3A0x38fc2e16f3c16cae!2sKollam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243208.1567150172!2d83.1118128362489!3d17.738096350392305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431389e6973f%3A0x92d9d203954984a1!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "grayscale(80%) contrast(120%)" }}
