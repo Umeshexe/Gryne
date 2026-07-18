@@ -13,16 +13,24 @@ export default function NavBar() {
   const { openInquiry } = useInquiry();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
-    // Hide navbar if scrolling down, show if scrolling up. Ensure it doesn't hide at the very top.
+    // Hide navbar if scrolling down, show if scrolling up.
     if (latest > previous && latest > 150 && !mobileMenuOpen) {
       setHidden(true);
     } else {
       setHidden(false);
+    }
+
+    // Trigger scrolled state past 80px
+    if (latest > 80) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
     }
   });
 
@@ -31,15 +39,13 @@ export default function NavBar() {
     { name: "About Us", href: "/about" },
     { name: "Gallery", href: "/gallery" },
     { name: "Blog", href: "/blog" },
-    { name: "CSR", href: "/csr" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
     <>
       <motion.nav
-        className="fixed top-0 w-full z-50 border-b-4 border-primary"
-        style={{ backgroundColor: "#E8C97A" }}
+        className="fixed top-0 w-full z-50 transition-all duration-300 bg-[#F7F2E8]/85 backdrop-blur-md border-b border-primary/10 shadow-[0_4px_20px_rgba(26,20,48,0.06)]"
         variants={{
           visible: { y: 0, opacity: 1 },
           hidden: { y: "-105%", opacity: 0 },
@@ -47,20 +53,21 @@ export default function NavBar() {
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
       >
-        <div className="flex justify-between items-center px-6 md:px-gutter py-4 w-full max-w-[1440px] mx-auto">
+        <div className="flex justify-between items-center pr-6 md:pr-gutter pl-0 py-0 w-full max-w-[1440px] mx-auto">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.25, duration: 0.4 }}
+            className="md:-ml-6"
           >
             <Link href="/" className="block hover:scale-105 transition-transform duration-300">
               <Image
                 src="/logo/Gryne Rectangle.png"
                 alt="Gryne Cashews"
-                width={120}
-                height={48}
-                className="h-10 w-auto object-contain"
+                width={240}
+                height={96}
+                className="h-[72px] md:h-[96px] w-auto object-contain drop-shadow-[0_4px_12px_rgba(59,40,255,0.12)]"
                 priority
               />
             </Link>
@@ -86,9 +93,9 @@ export default function NavBar() {
                 >
                   <Link
                     href={link.href}
-                    className={`font-button-text text-button-text px-3 py-1 transition-all duration-200 hover:bg-primary hover:text-on-primary ${
+                    className={`font-button-text text-button-text px-3 py-1.5 transition-all duration-200 rounded hover:bg-primary/10 ${
                       isActive
-                        ? "text-primary font-bold underline decoration-2 underline-offset-8"
+                        ? "text-primary font-bold underline decoration-2 underline-offset-8 decoration-primary"
                         : "text-on-background"
                     }`}
                   >
@@ -110,7 +117,7 @@ export default function NavBar() {
               whileHover={{ x: 2, y: 2 }}
               whileTap={{ x: 4, y: 4 }}
               onClick={openInquiry}
-              className="font-button-text text-button-text bg-primary text-on-primary border-2 border-primary px-6 py-2 shadow-[4px_4px_0px_0px_#18FF00] hover:bg-accent hover:text-on-accent hover:border-accent transition-colors duration-300 hover:shadow-[2px_2px_0px_0px_#3B28FF]"
+              className="font-button-text text-button-text border-2 px-6 py-2 transition-colors duration-300 cursor-pointer bg-primary text-white border-primary shadow-[4px_4px_0px_0px_#18FF00] hover:bg-accent hover:text-on-accent hover:border-accent"
             >
               Wholesale Inquiry
             </motion.button>
@@ -119,32 +126,29 @@ export default function NavBar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-primary p-2 cursor-pointer"
+            className="md:hidden relative w-10 h-10 flex flex-col justify-center items-center focus:outline-none cursor-pointer text-primary"
             aria-label="Toggle Menu"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              {mobileMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="w-8 h-8" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="w-8 h-8" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div className="relative w-6 h-5">
+              <motion.span
+                className="absolute left-0 block h-[3px] w-6 rounded bg-primary"
+                animate={mobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                style={{ originX: 0.5, originY: 0.5, top: "0px" }}
+              />
+              <motion.span
+                className="absolute left-0 block h-[3px] w-6 rounded bg-primary"
+                animate={mobileMenuOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
+                transition={{ duration: 0.15 }}
+                style={{ top: "8px" }}
+              />
+              <motion.span
+                className="absolute left-0 block h-[3px] w-6 rounded bg-primary"
+                animate={mobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                style={{ originX: 0.5, originY: 0.5, top: "16px" }}
+              />
+            </div>
           </button>
         </div>
       </motion.nav>
@@ -167,8 +171,7 @@ export default function NavBar() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute top-[80px] left-0 w-full border-b-4 border-primary p-8 flex flex-col gap-6 shadow-[0_4px_0_0_#3B28FF]"
-              style={{ backgroundColor: "#E8C97A" }}
+              className="absolute top-[80px] left-0 w-full border-b-4 p-8 flex flex-col gap-6 transition-colors duration-300 border-primary bg-background shadow-[0_4px_20px_rgba(26,20,48,0.1)]"
               onClick={(e) => e.stopPropagation()}
             >
               {navLinks.map((link, i) => {
@@ -183,8 +186,10 @@ export default function NavBar() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block font-button-text text-button-text text-2xl py-2 border-b-2 border-surface-alt ${
-                        isActive ? "text-primary pl-2 border-l-4 border-l-primary" : "text-on-background"
+                      className={`block font-button-text text-button-text text-2xl py-2 border-b-2 border-white/10 ${
+                        isActive
+                          ? "text-primary pl-2 border-l-4 border-l-primary"
+                          : "text-on-background"
                       }`}
                     >
                       {link.name}
@@ -200,7 +205,7 @@ export default function NavBar() {
                   setMobileMenuOpen(false);
                   openInquiry();
                 }}
-                className="w-full text-center font-button-text text-button-text bg-primary text-on-primary border-2 border-primary py-4 shadow-[4px_4px_0px_0px_#18FF00] hover:bg-accent hover:text-on-accent transition-colors duration-200 cursor-pointer"
+                className="w-full text-center font-button-text text-button-text py-4 transition-colors duration-200 cursor-pointer bg-primary text-white border-2 border-primary shadow-[4px_4px_0px_0px_#18FF00] hover:bg-accent"
               >
                 Wholesale Inquiry
               </motion.button>

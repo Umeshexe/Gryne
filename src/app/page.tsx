@@ -7,6 +7,8 @@ import { useInquiry } from "@/context/inquiry-context";
 import Marquee from "@/components/ui/marquee";
 import { CashewScene } from "@/components/3d/cashew-scene";
 import { ArrowRight, Globe, ShieldCheck, Tractor, Ship } from "lucide-react";
+import BlurText from "@/components/ui/blur-text";
+import DotField from "@/components/ui/dot-field";
 
 // ─── Reusable animation variants ─────────────────────────────────────────────
 
@@ -121,10 +123,18 @@ function StatCard({
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-      className={`${bg} p-8 border-4 border-primary hard-shadow relative overflow-hidden`}
+      whileHover={{ 
+        x: -6, 
+        y: -6, 
+        boxShadow: "10px 10px 0px 0px #18FF00",
+        transition: { duration: 0.15, ease: "easeOut" }
+      }}
+      style={{
+        boxShadow: "5px 5px 0px 0px #1A1430",
+      }}
+      className={`${bg} p-8 border-4 border-on-background relative overflow-hidden transition-all duration-150`}
     >
-      <Icon className={`${textColor} w-24 h-24 opacity-10 absolute -top-4 -right-4`} />
+      <Icon className={`${textColor} w-8 h-8 md:w-10 md:h-10 opacity-70 absolute top-6 right-6`} />
       <h3 className={`font-display-xl text-[72px] leading-none ${textColor}`}>{value}</h3>
       <p className={`font-button-text text-button-text ${labelColor} mt-4 uppercase`}>{label}</p>
     </motion.div>
@@ -165,20 +175,29 @@ function OceanJourney() {
       className="py-section-gap bg-primary relative overflow-hidden text-white border-y-8 border-accent w-full"
     >
       {/* Dot-grid texture overlay */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1.5px,transparent_1.5px)] [background-size:28px_28px]" />
+      <div className="absolute inset-0 opacity-80 pointer-events-none z-0">
+        <DotField
+          dotRadius={3.0}
+          dotSpacing={30}
+          bulgeStrength={60}
+          glowRadius={220}
+          sparkle={false}
+          waveAmplitude={0}
+          gradientFrom="rgba(255, 255, 255, 0.75)"
+          gradientTo="rgba(255, 255, 255, 0.35)"
+          glowColor="rgba(24, 255, 0, 0.2)"
+        />
+      </div>
 
       {/* Radial glow at center for depth */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(24,255,0,0.06),transparent)] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-gutter relative z-20">
         <AnimatedSection className="text-center mb-24">
-          <motion.h2
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-accent uppercase"
-          >
-            The Ocean Journey
-          </motion.h2>
+          <BlurText 
+            text="THE OCEAN JOURNEY"
+            className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-accent uppercase justify-center"
+          />
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.15 }}
@@ -279,7 +298,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* ── 1. Hero Section with 3D Canvas ── */}
-      <header className="relative min-h-screen flex items-center justify-center pt-24 pb-section-gap overflow-hidden bg-primary">
+      <header className="relative min-h-screen flex items-center justify-center pt-32 pb-section-gap overflow-hidden bg-primary -mt-[76px]">
         {/* Three.js Canvas — pointer-events-none: mouse tracked globally via window listener */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <CashewScene />
@@ -355,7 +374,7 @@ export default function HomePage() {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/business"
-                className="w-full sm:w-auto block text-center font-button-text text-button-text bg-accent text-on-accent px-8 py-4 border-2 border-accent hover:bg-white hover:text-primary transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] text-xl"
+                className="block text-center font-button-text text-button-text bg-accent text-on-accent px-8 py-4 border-2 border-accent hover:bg-white hover:text-primary transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] text-xl"
               >
                 EXPLORE THE CHAIN
               </Link>
@@ -364,7 +383,7 @@ export default function HomePage() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               onClick={openInquiry}
-              className="w-full sm:w-auto text-center font-button-text text-button-text bg-white/10 text-white px-8 py-4 border-2 border-white hover:bg-white hover:text-primary transition-all duration-300 shadow-[4px_4px_0px_0px_#18FF00] text-xl"
+              className="text-center font-button-text text-button-text bg-white/10 text-white px-8 py-4 border-2 border-white hover:bg-white hover:text-primary transition-all duration-300 shadow-[4px_4px_0px_0px_#18FF00] text-xl"
             >
               WHOLESALE INQUIRY
             </motion.button>
@@ -386,13 +405,11 @@ export default function HomePage() {
             >
               THE SCALE
             </motion.div>
-            <motion.h2
-              variants={fadeUp}
-              transition={{ duration: 0.5, delay: 0.1 }}
+            <BlurText 
+              text="MASSIVE IMPACT."
               className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-on-background uppercase mb-6"
-            >
-              Massive Impact.
-            </motion.h2>
+              delay={0.1}
+            />
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -404,9 +421,9 @@ export default function HomePage() {
           </AnimatedSection>
 
           <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <StatCard value="50+" label="Global Partners" icon={Globe} bg="bg-primary" textColor="text-white" labelColor="text-white/80" delay={0.1} />
-            <StatCard value="10K" label="Tons Shipped Annually" icon={Tractor} bg="bg-surface" textColor="text-primary" labelColor="text-on-surface-variant" delay={0.2} />
-            <StatCard value="100%" label="Direct Source Traceability" icon={ShieldCheck} bg="bg-accent" textColor="text-on-accent" labelColor="text-on-accent" delay={0.3} />
+            <StatCard value="10+" label="Global Partners" icon={Globe} bg="bg-primary" textColor="text-vibrant-yellow" labelColor="text-white/80" delay={0.1} />
+            <StatCard value="7K" label="Tons Shipped Annually" icon={Tractor} bg="bg-primary" textColor="text-vibrant-yellow" labelColor="text-white/80" delay={0.2} />
+            <StatCard value="100%" label="Direct Source Traceability" icon={ShieldCheck} bg="bg-primary" textColor="text-vibrant-yellow" labelColor="text-white/80" delay={0.3} />
           </div>
         </div>
       </section>
@@ -424,13 +441,11 @@ export default function HomePage() {
           >
             GLOBAL SUPPLY SYNDICATE
           </motion.span>
-          <motion.h2
-            variants={fadeUp}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-on-background uppercase max-w-4xl mx-auto mb-8"
-          >
-            Secure Premium Grade Cashews for Your Wholesale Operations.
-          </motion.h2>
+          <BlurText 
+            text="Secure Premium Grade Cashews for Your Wholesale Operations."
+            className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-on-background uppercase max-w-4xl mx-auto mb-8 justify-center"
+            delay={0.1}
+          />
           <motion.div variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }}>
             <motion.button
               whileHover={{ scale: 1.02 }}

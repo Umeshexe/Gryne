@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useInquiry } from "@/context/inquiry-context";
 import Marquee from "@/components/ui/marquee";
 import { Factory, ShieldCheck, Truck, ArrowRight, Warehouse, Landmark } from "lucide-react";
+import BlurText from "@/components/ui/blur-text";
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 
@@ -89,7 +90,7 @@ const chainSteps = [
     icon: Truck,
   },
   {
-    num: "03", title: "Precision Milling", location: "Vizag, India",
+    num: "03", title: "Processing", location: "Vizag, India",
     desc: "High-standard sorting mills combine robotic precision with human expertise to shell, grade, and verify each cashew kernel.",
     icon: Factory,
   },
@@ -144,7 +145,7 @@ export default function BusinessPage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── 1. Marquee ── */}
-      <div className="bg-primary text-vibrant-yellow overflow-hidden py-4 border-b-4 border-vibrant-yellow relative z-40">
+      <div className="bg-primary text-vibrant-yellow overflow-hidden pt-[76px] pb-4 border-b-4 border-vibrant-yellow relative z-40 -mt-[76px]">
         <Marquee items={["GLOBAL SUPPLY CHAIN", "RAW AFRICAN ORIGIN", "PRECISION INDIAN MILLING", "SECURE WHOLESALE PACKAGING"]} />
       </div>
 
@@ -165,9 +166,11 @@ export default function BusinessPage() {
             <span className="inline-block bg-vibrant-yellow text-primary font-label-caps text-label-caps px-4 py-1 sticker mb-6 uppercase shadow-[2px_2px_0px_0px_#3B28FF]">
               Business Operations
             </span>
-            <h1 className="font-display-xl text-[56px] leading-[54px] md:text-headline-lg text-primary uppercase leading-none mb-6">
-              Scaling <span className="text-electric-blue">Quality</span> <br />Across Continents.
-            </h1>
+            <BlurText 
+              text="SCALING QUALITY ACROSS CONTINENTS."
+              className="font-display-xl text-[56px] leading-[54px] md:text-headline-lg text-primary uppercase leading-none mb-6"
+              delay={0.3}
+            />
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-lg">
               We manage the entire lifecycle of the cashew. From deep roots in West Africa to precision processing facilities in India, delivering unmatched quality to wholesale partners worldwide.
             </p>
@@ -214,9 +217,11 @@ export default function BusinessPage() {
             <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps text-vibrant-yellow mb-4 block">
               INFRASTRUCTURE MAP
             </motion.span>
-            <motion.h2 variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-headline-lg text-[44px] leading-tight md:text-headline-lg uppercase text-white mb-6">
-              Our Vertically Integrated Pipeline
-            </motion.h2>
+            <BlurText 
+              text="Our Vertically Integrated Pipeline"
+              className="font-headline-lg text-[44px] leading-tight md:text-headline-lg uppercase text-white mb-6"
+              delay={0.1}
+            />
             <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg text-white/70">
               By owning the sourcing, shipping, and milling operations, we guarantee structural safety, fair labor practices, and flawless product grading.
             </motion.p>
@@ -241,9 +246,10 @@ export default function BusinessPage() {
             <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-electric-blue text-white font-label-caps text-xs px-4 py-2 border-2 border-primary shadow-[2px_2px_0px_0px_#3B28FF]">
               B2B WHOLESALE SPECIFICATIONS
             </div>
-            <h2 className="font-headline-lg text-[36px] md:text-[52px] leading-none text-primary uppercase mt-4 mb-6">
-              Export Standards Verified
-            </h2>
+            <BlurText 
+              text="Export Standards Verified"
+              className="font-headline-lg text-[36px] md:text-[52px] leading-none text-primary uppercase mt-4 mb-6 justify-center"
+            />
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-8 font-bold">
               We mill and grade in ISO 22000 &amp; HACCP certified facilities, delivering bulk cargo vacuum packed in 25lb / 50lb tins or multi-layer bags.
             </p>

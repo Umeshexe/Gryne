@@ -318,7 +318,32 @@ export default function ContactPage() {
             <DetailCard
               icon={MapPin}
               title="HEAD OFFICE"
-              lines={["Gryne International", "Industrial Estate, Visakhapatnam,", "Andhra Pradesh, India — 530 007"]}
+              lines={[
+                "Sri Ganesh Cashew Industry",
+                "Door No: 19.2.242/A, Srinivasanagar,",
+                "Palasa, Andhra Pradesh - 532221"
+              ]}
+              accent=""
+            />
+            <DetailCard
+              icon={MapPin}
+              title="UNIT 1 (PALASA)"
+              lines={[
+                "86/B Industrial Park, Palasa,",
+                "Srikakulam District,",
+                "Andhra Pradesh - 532221"
+              ]}
+              accent=""
+            />
+            <DetailCard
+              icon={MapPin}
+              title="UNIT 2 (ANAKAPALLI)"
+              lines={[
+                "Sri Ganesh Cashew Industry",
+                "Komaravolu Village, Rolugunta Mandal,",
+                "Anakapalli District,",
+                "Andhra Pradesh - 531114"
+              ]}
               accent=""
             />
             <DetailCard
@@ -337,7 +362,7 @@ export default function ContactPage() {
             {/* Map Embed */}
             <div className="w-full h-[220px] border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243208.1567150172!2d83.1118128362489!3d17.738096350392305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431389e6973f%3A0x92d9d203954984a1!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000"
+                src="https://maps.google.com/maps?q=Sri%20Ganesh%20Cashew%20Industry%2C%20Srinivasanagar%2C%20Palasa%2C%20Andhra%20Pradesh%20532221&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "grayscale(80%) contrast(120%)" }}

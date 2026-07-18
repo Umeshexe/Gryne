@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -182,15 +182,24 @@ function generateCashews(count: number) {
 
 const CASHEW_DATA = generateCashews(32);
 
-// ─── Scene component ──────────────────────────────────────────────────────────
-
 function Scene() {
   useTexture(Object.values(TEXTURE_URLS)); // Preload all
+  const { width } = useThree((state) => state.viewport);
   return (
     <>
-      {CASHEW_DATA.map((c) => (
-        <CashewBillboard key={c.id} {...c} />
-      ))}
+      {CASHEW_DATA.map((c) => {
+        // Spread the X positions. On mobile (small width), don't squish them too much.
+        const effectiveWidth = Math.max(width, 14);
+        const normX = c.position[0] / 10;
+        const dynamicX = normX * (effectiveWidth * 0.75);
+        return (
+          <CashewBillboard
+            key={c.id}
+            {...c}
+            position={[dynamicX, c.position[1], c.position[2]]}
+          />
+        );
+      })}
     </>
   );
 }

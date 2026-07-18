@@ -1,10 +1,11 @@
-﻿"use client";
+"use client";
 
 import React, { useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import Marquee from "@/components/ui/marquee";
+import BlurText from "@/components/ui/blur-text";
 
 // ─── Gallery Data ─────────────────────────────────────────────────────────────
 
@@ -60,12 +61,12 @@ const images = [
   {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs",
     alt: "Farming community",
-    tag: "CSR",
+    tag: "ORIGIN",
     span: "normal",
   },
 ];
 
-const tags = ["ALL", "ORIGIN", "FACILITY", "HARVEST", "TEAM", "PRODUCT", "CSR"];
+const tags = ["ALL", "ORIGIN", "FACILITY", "HARVEST", "TEAM", "PRODUCT"];
 
 // ─── Image Card ───────────────────────────────────────────────────────────────
 
@@ -224,7 +225,7 @@ export default function GalleryPage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── 1. Hero ── */}
-      <section className="relative min-h-[440px] flex items-center px-6 md:px-margin-safe max-w-[1440px] mx-auto w-full overflow-hidden pt-24">
+      <section className="relative min-h-[440px] flex items-center px-6 md:px-margin-safe max-w-[1440px] mx-auto w-full overflow-hidden pt-[140px] -mt-[76px]">
         <div className="absolute left-0 top-0 w-1/3 h-full bg-primary/5 pointer-events-none" />
         <div className="absolute -left-4 top-1/2 -translate-y-1/2 font-display-xl text-[200px] text-primary/5 select-none pointer-events-none whitespace-nowrap">
           SEE
@@ -244,18 +245,10 @@ export default function GalleryPage() {
             VISUAL ARCHIVE
           </motion.div>
 
-          {["THE", "HARVEST."].map((word, i) => (
-            <div key={word} className="overflow-hidden">
-              <motion.h1
-                className="font-display-xl text-[72px] leading-[68px] md:text-[140px] md:leading-[125px] text-primary uppercase block"
-                variants={{ hidden: { opacity: 0, y: 40, rotateX: -60 }, visible: { opacity: 1, y: 0, rotateX: 0 } }}
-                transition={{ duration: 0.65, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-                style={{ perspective: 800 }}
-              >
-                {word}
-              </motion.h1>
-            </div>
-          ))}
+          <BlurText 
+            text="THE HARVEST."
+            className="font-display-xl text-[72px] leading-[68px] md:text-[140px] md:leading-[125px] text-primary uppercase block"
+          />
 
           <motion.p
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}

@@ -23,6 +23,12 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     lenisRef.current = lenis;
 
+    // Track dynamic page layout shifts (e.g. async image loading) and update scroll boundaries
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+    resizeObserver.observe(document.body);
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -31,6 +37,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     requestAnimationFrame(raf);
 
     return () => {
+      resizeObserver.disconnect();
       lenis.destroy();
     };
   }, []);
