@@ -230,14 +230,14 @@ export default function CSRPage() {
       {/* ── 3. Sustainability Pillars ── */}
       <section className="bg-primary text-on-primary py-section-gap relative overflow-hidden w-full border-t-8 border-vibrant-yellow">
         {/* Dot-grid texture overlay */}
-        <div className="absolute inset-0 opacity-15 pointer-events-none z-0">
+        <div className="absolute inset-0 opacity-80 pointer-events-none z-0">
           <DotField
-            dotRadius={2.0}
+            dotRadius={3.0}
             dotSpacing={30}
-            bulgeStrength={50}
-            glowRadius={200}
-            gradientFrom="rgba(255, 255, 255, 0.8)"
-            gradientTo="rgba(255, 255, 255, 0.3)"
+            bulgeStrength={60}
+            glowRadius={220}
+            gradientFrom="rgba(255, 255, 255, 0.75)"
+            gradientTo="rgba(255, 255, 255, 0.35)"
           />
         </div>
         <div className="max-w-[1440px] mx-auto px-6 md:px-margin-safe relative z-10 w-full">
