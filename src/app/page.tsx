@@ -134,7 +134,9 @@ function StatCard({
       }}
       className={`${bg} p-8 border-4 border-on-background relative overflow-hidden transition-all duration-150`}
     >
-      <Icon className={`${textColor} w-8 h-8 md:w-10 md:h-10 opacity-70 absolute top-6 right-6`} />
+      <div className="absolute top-6 right-6 w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-inner">
+        <Icon className={`${textColor} w-7 h-7 md:w-9 md:h-9`} />
+      </div>
       <h3 className={`font-display-xl text-[72px] leading-none ${textColor}`}>{value}</h3>
       <p className={`font-button-text text-button-text ${labelColor} mt-4 uppercase`}>{label}</p>
     </motion.div>
