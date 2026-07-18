@@ -45,6 +45,7 @@ const VERTEX_SHADER = /* glsl */ `
 `;
 
 const FRAGMENT_SHADER = /* glsl */ `
+  precision mediump float;
   uniform sampler2D map;
   varying vec2 vUv;
 
