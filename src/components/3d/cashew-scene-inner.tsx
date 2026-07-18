@@ -26,6 +26,7 @@ function preloadTextures(): Record<Variant, THREE.Texture> {
     (Object.entries(TEXTURE_URLS) as [Variant, string][]).map(([key, url]) => {
       const tex = loader.load(url);
       tex.colorSpace = THREE.SRGBColorSpace;
+      tex.premultiplyAlpha = false;
       return [key, tex];
     })
   ) as Record<Variant, THREE.Texture>;
@@ -36,7 +37,12 @@ const SHARED_TEXTURES = preloadTextures();
 
 // ─── Custom shader: discards near-white background pixels ─────────────────────
 
+// ─── Simple pass-through shaders using native PNG alpha ───────────────────────
+// Images now have real transparent backgrounds — no luma hacking needed.
+// This is far more reliable across all mobile GPUs (Samsung Mali, Adreno, etc.)
+
 const VERTEX_SHADER = /* glsl */ `
+  precision mediump float;
   varying vec2 vUv;
   void main() {
     vUv = uv;
@@ -51,21 +57,8 @@ const FRAGMENT_SHADER = /* glsl */ `
 
   void main() {
     vec4 c = texture2D(map, vUv);
-
-    float lum = dot(c.rgb, vec3(0.299, 0.587, 0.114));
-    float minCh = min(c.r, min(c.g, c.b));
-    float maxCh = max(c.r, max(c.g, c.b));
-    float diff = maxCh - minCh;
-
-    if (lum > 0.78 && diff < 0.15) discard;
-    if (lum > 0.85 && minCh > 0.78) discard;
-
-    float bgness = lum * 0.4 + minCh * 0.4 + (1.0 - diff) * 0.2;
-    float alpha = 1.0 - smoothstep(0.70, 0.85, bgness);
-
-    if (alpha < 0.01) discard;
-
-    gl_FragColor = vec4(c.rgb, alpha);
+    if (c.a < 0.05) discard;
+    gl_FragColor = c;
   }
 `;
 
