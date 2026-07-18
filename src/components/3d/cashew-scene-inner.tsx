@@ -2,7 +2,6 @@
 
 import { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
@@ -98,7 +97,12 @@ function CashewBillboard({
   const cameraQuatRef = useRef(new THREE.Quaternion());
   const cameraRef = useRef<THREE.Camera | null>(null);
 
-  const texture = useTexture(TEXTURE_URLS[variant]);
+  const texture = useMemo(() => {
+    const loader = new THREE.TextureLoader();
+    const tex = loader.load(TEXTURE_URLS[variant]);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+  }, [variant]);
 
   // Custom ShaderMaterial: removes white background, keeps only the cashew
   const material = useMemo(
@@ -183,7 +187,6 @@ function generateCashews(count: number) {
 const CASHEW_DATA = generateCashews(32);
 
 function Scene() {
-  useTexture(Object.values(TEXTURE_URLS)); // Preload all
   const { width } = useThree((state) => state.viewport);
   return (
     <>
