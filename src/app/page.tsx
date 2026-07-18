@@ -28,8 +28,8 @@ const staggerContainer = {
 };
 
 const wordReveal = {
-  hidden: { opacity: 0, y: 30, rotateX: -60 },
-  visible: { opacity: 1, y: 0, rotateX: 0 },
+  hidden: { opacity: 0, y: 48 },
+  visible: { opacity: 1, y: 0 },
 };
 
 // ─── AnimatedSection wrapper ──────────────────────────────────────────────────
@@ -71,19 +71,19 @@ function HeroTitle() {
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
-      style={{ perspective: 800 }}
+      style={{ willChange: "transform" }}
     >
       {words.map((word, i) => (
         <React.Fragment key={word}>
           <span className="block overflow-hidden">
             <motion.span
               className={`block ${i === 1 ? "text-accent" : "text-white"}`}
-              style={i === 1 ? { textShadow: "2px 2px 0px rgba(0,0,0,0.3)" } : undefined}
+              style={i === 1 ? { textShadow: "2px 2px 0px rgba(0,0,0,0.3)", willChange: "transform" } : { willChange: "transform" }}
               variants={wordReveal}
               transition={{
-                duration: 0.7,
-                delay: i * 0.15,
-                ease: [0.25, 0.46, 0.45, 0.94],
+                duration: 0.65,
+                delay: 0.35 + i * 0.15,
+                ease: [0.22, 1, 0.36, 1],
               }}
             >
               {word}
