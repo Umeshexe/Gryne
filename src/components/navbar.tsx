@@ -163,7 +163,7 @@ export default function NavBar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-on-background/30 backdrop-blur-sm md:hidden"
+            className="fixed top-[72px] inset-x-0 bottom-0 z-50 bg-on-background/30 backdrop-blur-sm md:hidden"
             onClick={() => setMobileMenuOpen(false)}
           >
             <motion.div
@@ -172,7 +172,7 @@ export default function NavBar() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute top-[80px] left-0 w-full border-b-4 p-8 flex flex-col gap-6 transition-colors duration-300 border-primary bg-background shadow-[0_4px_20px_rgba(26,20,48,0.1)]"
+              className="absolute top-0 left-0 w-full border-b-4 p-8 flex flex-col gap-6 transition-colors duration-300 border-primary bg-background shadow-[0_4px_20px_rgba(26,20,48,0.1)]"
               onClick={(e) => e.stopPropagation()}
             >
               {navLinks.map((link, i) => {

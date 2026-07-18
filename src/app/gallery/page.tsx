@@ -225,7 +225,7 @@ export default function GalleryPage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── 1. Hero ── */}
-      <section className="relative min-h-[440px] flex items-center px-6 md:px-margin-safe max-w-[1440px] mx-auto w-full overflow-hidden pt-[140px] -mt-[76px]">
+      <section className="relative min-h-[440px] flex items-center px-6 md:px-margin-safe max-w-[1440px] mx-auto w-full overflow-hidden pt-[140px] -mt-[72px] md:-mt-[96px]">
         <div className="absolute left-0 top-0 w-1/3 h-full bg-primary/5 pointer-events-none" />
         <div className="absolute -left-4 top-1/2 -translate-y-1/2 font-display-xl text-[200px] text-primary/5 select-none pointer-events-none whitespace-nowrap">
           SEE

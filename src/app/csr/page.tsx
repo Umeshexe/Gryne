@@ -157,7 +157,7 @@ export default function CSRPage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── 1. Marquee ── */}
-      <div className="bg-primary text-vibrant-yellow overflow-hidden py-4 border-b-4 border-vibrant-yellow mt-[72px] md:mt-[96px] relative z-10">
+      <div className="bg-primary text-vibrant-yellow overflow-hidden py-4 border-b-4 border-vibrant-yellow relative z-10">
         <Marquee items={["SUSTAINABLE INITIATIVES", "ETHICAL CO-OP INVESTMENT", "CARBON RENEWABLE PROCESSING", "DIRECT GROWER ENRICHMENT"]} />
       </div>
 

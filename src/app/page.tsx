@@ -298,7 +298,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* ── 1. Hero Section with 3D Canvas ── */}
-      <header className="relative min-h-screen flex items-center justify-center pt-32 pb-section-gap overflow-hidden bg-primary -mt-[76px]">
+      <header className="relative min-h-screen flex items-center justify-center pt-32 pb-section-gap overflow-hidden bg-primary -mt-[72px] md:-mt-[96px]">
         {/* Three.js Canvas — pointer-events-none: mouse tracked globally via window listener */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <CashewScene />
