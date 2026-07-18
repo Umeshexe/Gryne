@@ -7,6 +7,7 @@ import WholesaleInquiryModal from "@/components/wholesale-inquiry-modal";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
 import SmoothScroll from "@/components/layout/smooth-scroll";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
               <Footer />
               <WholesaleInquiryModal />
               <Toaster />
+              <Analytics />
             </InquiryProvider>
           </SmoothScroll>
         </Providers>
