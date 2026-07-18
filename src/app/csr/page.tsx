@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useInquiry } from "@/context/inquiry-context";
 import Marquee from "@/components/ui/marquee";
 import { Heart, Sprout, Sun, Droplets } from "lucide-react";
+import DotField from "@/components/ui/dot-field";
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
@@ -58,14 +59,14 @@ function PillarCard({ pillar, i }: { pillar: { title: string; desc: string; icon
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.12 }}
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
-      className={`bg-surface border-2 border-secondary p-6 shadow-[4px_4px_0px_0px_rgba(59,40,255,0.15)] flex flex-col justify-between transition-colors duration-300 cursor-pointer group ${pillar.hoverBg}`}
+      className={`bg-surface border-2 border-primary p-6 shadow-[4px_4px_0px_0px_rgba(59,40,255,0.15)] flex flex-col justify-between transition-all duration-300 cursor-pointer group ${pillar.hoverBg} hover:border-black hover:shadow-[8px_8px_0px_0px_#000000]`}
     >
       <div>
         <div className="w-12 h-12 bg-vibrant-yellow border-2 border-primary flex items-center justify-center font-display-xl text-[20px] text-primary shadow-[2px_2px_0px_0px_#3B28FF] mb-6 group-hover:scale-110 transition-transform">
           <Icon className="w-6 h-6 text-primary" />
         </div>
-        <h3 className="font-headline-md text-[24px] leading-none text-white uppercase mb-4 group-hover:text-current">{pillar.title}</h3>
-        <p className="font-body-md text-body-md text-on-primary/80 group-hover:text-current">{pillar.desc}</p>
+        <h3 className="font-headline-md text-[24px] leading-none text-primary uppercase mb-4 group-hover:text-current">{pillar.title}</h3>
+        <p className="font-body-md text-body-md text-primary/85 group-hover:text-current">{pillar.desc}</p>
       </div>
     </motion.div>
   );
@@ -228,7 +229,17 @@ export default function CSRPage() {
 
       {/* ── 3. Sustainability Pillars ── */}
       <section className="bg-primary text-on-primary py-section-gap relative overflow-hidden w-full border-t-8 border-vibrant-yellow">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
+        {/* Dot-grid texture overlay */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none z-0">
+          <DotField
+            dotRadius={2.0}
+            dotSpacing={30}
+            bulgeStrength={50}
+            glowRadius={200}
+            gradientFrom="rgba(255, 255, 255, 0.8)"
+            gradientTo="rgba(255, 255, 255, 0.3)"
+          />
+        </div>
         <div className="max-w-[1440px] mx-auto px-6 md:px-margin-safe relative z-10 w-full">
           <ScrollSection className="mb-16 max-w-2xl">
             <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps text-vibrant-yellow mb-4 block">
