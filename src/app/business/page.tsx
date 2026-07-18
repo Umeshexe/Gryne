@@ -7,6 +7,7 @@ import { useInquiry } from "@/context/inquiry-context";
 import Marquee from "@/components/ui/marquee";
 import { Factory, ShieldCheck, Truck, ArrowRight, Warehouse, Landmark } from "lucide-react";
 import BlurText from "@/components/ui/blur-text";
+import DotField from "@/components/ui/dot-field";
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 
@@ -68,9 +69,9 @@ function ChainStepCard({ step, i }: { step: { num: string; title: string; locati
           </div>
           <span className="font-headline-md text-3xl text-secondary opacity-30 select-none">{step.num}</span>
         </div>
-        <h3 className="font-headline-md text-[24px] leading-none text-white uppercase mb-1">{step.title}</h3>
+        <h3 className="font-headline-md text-[24px] leading-none text-primary uppercase mb-1">{step.title}</h3>
         <span className="font-label-caps text-xs text-electric-blue block mb-4">{step.location}</span>
-        <p className="font-body-md text-body-md text-on-primary/80">{step.desc}</p>
+        <p className="font-body-md text-body-md text-primary/85">{step.desc}</p>
       </div>
     </motion.div>
   );
@@ -211,7 +212,17 @@ export default function BusinessPage() {
 
       {/* ── 3. Supply Chain Steps ── */}
       <section className="bg-primary text-on-primary py-section-gap relative overflow-hidden w-full border-t-8 border-vibrant-yellow">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
+        {/* Dot-grid texture overlay */}
+        <div className="absolute inset-0 opacity-80 pointer-events-none z-0">
+          <DotField
+            dotRadius={3.0}
+            dotSpacing={30}
+            bulgeStrength={60}
+            glowRadius={220}
+            gradientFrom="rgba(255, 255, 255, 0.75)"
+            gradientTo="rgba(255, 255, 255, 0.35)"
+          />
+        </div>
         <div className="max-w-[1440px] mx-auto px-6 md:px-margin-safe relative z-10 w-full">
           <ScrollSection className="mb-16 max-w-2xl">
             <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps text-vibrant-yellow mb-4 block">
