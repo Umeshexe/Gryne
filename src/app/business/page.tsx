@@ -146,7 +146,7 @@ export default function BusinessPage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── 1. Marquee ── */}
-      <div className="bg-primary text-vibrant-yellow overflow-hidden pt-[76px] pb-4 border-b-4 border-vibrant-yellow relative z-40 -mt-[76px]">
+      <div className="bg-primary text-vibrant-yellow overflow-hidden py-4 border-b-4 border-vibrant-yellow mt-[72px] md:mt-[96px] relative z-10">
         <Marquee items={["GLOBAL SUPPLY CHAIN", "RAW AFRICAN ORIGIN", "PRECISION INDIAN MILLING", "SECURE WHOLESALE PACKAGING"]} />
       </div>
 
