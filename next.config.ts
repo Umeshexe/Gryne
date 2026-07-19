@@ -16,6 +16,15 @@ const nextConfig: NextConfig = {
     ],
   },
   allowedDevOrigins: ["192.168.10.10"],
+  async redirects() {
+    return [
+      {
+        source: "/scan",
+        destination: "/contact?utm_source=packaging&utm_medium=qr",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
