@@ -29,22 +29,10 @@ const images = [
     span: "normal",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuClXjEJcjhMwURVXm0LKq5vVhZbffeZhDzT3xpKstK5UixjfAkIXiSHEhRlQARMlW4KLiofcbmVMiD2i1rXuxmAS_0wB3wZ6k2zhEYgBsbVxQsnM2jiF2aA_HDpwkftHYiLetOQMzhQSsYv4iqGJev0dXryh8yc8XovL4jFX-2g-hL5apXBsjUssFxOWUEELRH6oAKKrTOQt4Un_zJ75OPd5aGa3IH2Ze34gGfRKJgy8qlw_qN7VPnpNY9flPCDN5m1Ap2mnaRRiBw",
-    alt: "Global Sourcing Director",
+    src: "/team/murari.png",
+    alt: "Murari - Founder & Managing Director",
     tag: "TEAM",
     span: "tall",
-  },
-  {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBYx2bhwJ73wYWyb85JFY9N_glkI7-rBRB0XOPMM4K0WyfIphubvC39974rSh1-pGF5Tgv5uyGryMk7lB1-5yRfFpACEWGP-4xm_vp9pLqA48CVjMecf88JNd5E9Hmanv7UADh_WMG7mq-A2q2TJKGcGEyoZygd1HAtqSo3V1hE6Uldt29I9HTLdIK7DeDBlHA-j7nUMfedW2-U7QUWpnWtsiIvH0meLGk2ukhJ6JtpuEIT7Nyq2nQd2bJyswAKsmAdzKwZwlu5pFA",
-    alt: "Head of Operations",
-    tag: "TEAM",
-    span: "normal",
-  },
-  {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAkJFjhFwGLkZ2xnSQPvZlPP4l6MKiIqLDg2RzVqdjaw1l5XiYY2RFSNdoLhBobTTymazVqbgMQfv3F6hqK-REIcu2pAImcuOj6lb3Fmi5gRpx_QrqxC65jCe2nZEpwf59_uzZGTthWVrBKMtue7pPrcBUflHPRLwFeD0MabQCmuVMPQfcQL9VJyejWa3QBhDtGkt5_nGrhWJksstcC-la_xRAJRh91FjPeunDpgXICPEGQN0W0XQ01M58YOiGvsvtnhFYPi6q-Ap4",
-    alt: "Chief Quality Officer",
-    tag: "TEAM",
-    span: "normal",
   },
   {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCA0QzyHvwRE3lk4qZREnjTGywVrGhNJkr4S4vtYH8hCJCWytPhJdjqi9Q8cjbKXnH8IALGegW4y0yOpXmRMZR1pMfkMMu6rE9Gwy1_9fe-8kThpDhKRMjtgnByu6UbaGb7dgSEQlBxYnh2oDkiCYIpAKrKB3DkqYwHDHv8oSwQ5MQkn6CM3w6FAxfSHGa73MAhAhVefxyAnBgohKnb384tms-llGR7VeUIA-W8fZVPu9Ecd2-rUQBmGYQ0kItnC1DcVMJ0rp0LnBA",

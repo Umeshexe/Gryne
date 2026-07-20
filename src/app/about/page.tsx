@@ -78,23 +78,23 @@ const timeline = [
 
 const team = [
   {
-    name: "Marcus Thorne",
-    role: "Global Sourcing Director",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuClXjEJcjhMwURVXm0LKq5vVhZbffeZhDzT3xpKstK5UixjfAkIXiSHEhRlQARMlW4KLiofcbmVMiD2i1rXuxmAS_0wB3wZ6k2zhEYgBsbVxQsnM2jiF2aA_HDpwkftHYiLetOQMzhQSsYv4iqGJev0dXryh8yc8XovL4jFX-2g-hL5apXBsjUssFxOWUEELRH6oAKKrTOQt4Un_zJ75OPd5aGa3IH2Ze34gGfRKJgy8qlw_qN7VPnpNY9flPCDN5m1Ap2mnaRRiBw",
+    name: "Murari",
+    role: "Founder & Managing Director",
+    img: "/team/murari.png",
     color: "border-vibrant-yellow",
     overlay: "bg-vibrant-yellow text-primary",
   },
   {
-    name: "Elena Rostova",
-    role: "Head of Operations",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBYx2bhwJ73wYWyb85JFY9N_glkI7-rBRB0XOPMM4K0WyfIphubvC39974rSh1-pGF5Tgv5uyGryMk7lB1-5yRfFpACEWGP-4xm_vp9pLqA48CVjMecf88JNd5E9Hmanv7UADh_WMG7mq-A2q2TJKGcGEyoZygd1HAtqSo3V1hE6Uldt29I9HTLdIK7DeDBlHA-j7nUMfedW2-U7QUWpnWtsiIvH0meLGk2ukhJ6JtpuEIT7Nyq2nQd2bJyswAKsmAdzKwZwlu5pFA",
+    name: "Operational Excellence",
+    role: "Precision Processing & Quality",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAuA1c7rGBNLMdGqTYTSQRIe2-t_dc5ZWv1msqw4IBQHVqotZmjO0c26kDpaWDimEthcqbzijBVT_Ap6Zhd8O6PSCQl2h72L7_qN5FMz5bIxYZGJ6FM7ZPLPXX4gE5LnJ2dt1CMVqBjwQkX1PEtxbhMb5BE8HY-YyvPixgeLKvXcWz2OlTZkAHA3_FiE0e7bh_QgnmPLMkHuoeAvB5IhE0R2SgEM2zQbcm5o3t-aKxoY1d1btvptAXuZnv5qTkZMbolD7UJ9oNP0AQ",
     color: "border-electric-blue",
     overlay: "bg-electric-blue text-white",
   },
   {
-    name: "David Chen",
-    role: "Chief Quality Officer",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAkJFjhFwGLkZ2xnSQPvZlPP4l6MKiIqLDg2RzVqdjaw1l5XiYY2RFSNdoLhBobTTymazVqbgMQfv3F6hqK-REIcu2pAImcuOj6lb3Fmi5gRpx_QrqxC65jCe2nZEpwf59_uzZGTthWVrBKMtue7pPrcBUflHPRLwFeD0MabQCmuVMPQfcQL9VJyejWa3QBhDtGkt5_nGrhWJksstcC-la_xRAJRh91FjPeunDpgXICPEGQN0W0XQ01M58YOiGvsvtnhFYPi6q-Ap4",
+    name: "West Africa Sourcing",
+    role: "Direct Origin Infrastructure",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs",
     color: "border-vibrant-yellow",
     overlay: "bg-vibrant-yellow text-primary",
   },
