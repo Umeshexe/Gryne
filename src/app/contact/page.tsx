@@ -317,52 +317,31 @@ export default function ContactPage() {
 
             <DetailCard
               icon={MapPin}
-              title="HEAD OFFICE"
+              title="FACTORY & REGISTERED OFFICE"
               lines={[
-                "Sri Ganesh Cashew Industry",
-                "Door No: 19.2.242/A, Srinivasanagar,",
+                "GRYNE PVT LTD.",
+                "Plot No : 01, Industrial Park,",
                 "Palasa, Andhra Pradesh - 532221"
               ]}
               accent=""
             />
             <DetailCard
-              icon={MapPin}
-              title="UNIT 1 (PALASA)"
-              lines={[
-                "86/B Industrial Park, Palasa,",
-                "Srikakulam District,",
-                "Andhra Pradesh - 532221"
-              ]}
-              accent=""
-            />
-            <DetailCard
-              icon={MapPin}
-              title="UNIT 2 (ANAKAPALLI)"
-              lines={[
-                "Sri Ganesh Cashew Industry",
-                "Komaravolu Village, Rolugunta Mandal,",
-                "Anakapalli District,",
-                "Andhra Pradesh - 531114"
-              ]}
-              accent=""
-            />
-            <DetailCard
-              icon={Phone}
-              title="PHONE"
-              lines={["+91 891 298 0000", "+91 98470 00000"]}
-              accent=""
-            />
-            <DetailCard
               icon={Mail}
               title="EMAIL"
-              lines={["trade@gryne.com", "quality@gryne.com"]}
+              lines={["info@gryne.global", "trade@gryne.in"]}
+              accent=""
+            />
+            <DetailCard
+              icon={Globe}
+              title="WEBSITE & INSTAGRAM"
+              lines={["www.gryne.in", "gryne.in"]}
               accent=""
             />
 
             {/* Map Embed */}
             <div className="w-full h-[220px] border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden relative">
               <iframe
-                src="https://maps.google.com/maps?q=Sri%20Ganesh%20Cashew%20Industry%2C%20Srinivasanagar%2C%20Palasa%2C%20Andhra%20Pradesh%20532221&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Palasa%2C%20Industrial%20Park%2C%20Andhra%20Pradesh%20532221&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "grayscale(80%) contrast(120%)" }}
@@ -376,13 +355,15 @@ export default function ContactPage() {
             {/* Social Links */}
             <div className="flex gap-4 mt-2">
               {[
-                { icon: Globe, label: "Website" },
-                { icon: MessageCircle, label: "WhatsApp" },
-                { icon: Link2, label: "LinkedIn" },
-              ].map(({ icon: Icon, label }) => (
+                { icon: Globe, label: "Website", href: "https://gryne.in" },
+                { icon: MessageCircle, label: "Instagram @gryne.in", href: "https://instagram.com/gryne.in" },
+                { icon: Link2, label: "LinkedIn", href: "https://gryne.in" },
+              ].map(({ icon: Icon, label, href }) => (
                 <motion.a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   whileHover={{ y: -3, x: 1 }}
                   whileTap={{ y: 1 }}

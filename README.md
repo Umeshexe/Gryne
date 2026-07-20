@@ -1,5 +1,7 @@
 # Gryne Cashews
 
+Live site: [gryne.in](https://gryne.in)
+
 A bold, high-contrast B2B website built for a premium cashew brand. It started as a set of design layouts exported from Google Stitch, which I migrated to a fully responsive frontend using Next.js (App Router), TypeScript, and Tailwind CSS v4.
 
 The site is built around a custom "maximalist-clean" aesthetic: high-contrast earth tones paired with bright primary accents, zero border-radius (sharp corners on everything), and flat, retro-feeling hard shadows instead of smooth ambient gradients.
