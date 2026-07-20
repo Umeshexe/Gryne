@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { useInquiry } from "@/context/inquiry-context";
 import { Menu, X } from "lucide-react";
+import { triggerHaptic } from "@/lib/haptics";
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -19,14 +20,17 @@ export default function NavBar() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
-    // Hide navbar if scrolling down, show if scrolling up.
-    if (latest > previous && latest > 150 && !mobileMenuOpen) {
+    const diff = latest - previous;
+
+    // Fix mobile scroll glitching: require significant scroll diff (12px)
+    if (mobileMenuOpen) {
+      setHidden(false);
+    } else if (diff > 12 && latest > 120) {
       setHidden(true);
-    } else {
+    } else if (diff < -8 || latest < 60) {
       setHidden(false);
     }
 
-    // Trigger scrolled state past 80px
     if (latest > 80) {
       setIsScrolled(true);
     } else {
@@ -126,7 +130,10 @@ export default function NavBar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              triggerHaptic('light');
+              setMobileMenuOpen(!mobileMenuOpen);
+            }}
             className="md:hidden relative w-10 h-10 flex flex-col justify-center items-center focus:outline-none cursor-pointer text-primary"
             aria-label="Toggle Menu"
           >
@@ -168,11 +175,12 @@ export default function NavBar() {
           >
             <motion.div
               key="mobile-drawer"
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute top-0 left-0 w-full border-b-4 p-8 flex flex-col gap-6 transition-colors duration-300 border-primary bg-background shadow-[0_4px_20px_rgba(26,20,48,0.1)]"
+              initial={{ scaleY: 0, opacity: 0 }}
+              animate={{ scaleY: 1, opacity: 1 }}
+              exit={{ scaleY: 0, opacity: 0 }}
+              style={{ transformOrigin: "top" }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-0 left-0 w-full border-b-4 p-8 flex flex-col gap-6 transition-colors duration-300 border-primary bg-background shadow-[0_8px_30px_rgba(26,20,48,0.15)]"
               onClick={(e) => e.stopPropagation()}
             >
               {navLinks.map((link, i) => {

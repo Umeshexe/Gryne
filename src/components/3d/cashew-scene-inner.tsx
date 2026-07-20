@@ -1,46 +1,28 @@
 "use client";
 
 import { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-// ─── Variants ─────────────────────────────────────────────────────────────────
-
-const VARIANTS = ["raw", "roasted", "spiced", "salted"] as const;
-type Variant = (typeof VARIANTS)[number];
-
-const TEXTURE_URLS: Record<Variant, string> = {
-  raw:     "/cashews/raw.png",
-  roasted: "/cashews/roasted.png",
-  spiced:  "/cashews/spiced.png",
-  salted:  "/cashews/salted.png",
-};
-
-// ─── Pre-load 4 shared textures (not 32!) ────────────────────────────────────
-// Creating one WebGL texture per variant and reusing across all billboards
-// dramatically reduces GPU memory and draw-call overhead.
-
-function preloadTextures(): Record<Variant, THREE.Texture> {
+// ─── 1. Only Normal Raw Cashew Texture ───────────────────────────────────────
+function loadRawTexture(): THREE.Texture {
+  if (typeof window === "undefined") return new THREE.Texture();
   const loader = new THREE.TextureLoader();
-  return Object.fromEntries(
-    (Object.entries(TEXTURE_URLS) as [Variant, string][]).map(([key, url]) => {
-      const tex = loader.load(url);
-      tex.colorSpace = THREE.SRGBColorSpace;
-      tex.premultiplyAlpha = false;
-      return [key, tex];
-    })
-  ) as Record<Variant, THREE.Texture>;
+  const tex = loader.load("/cashews/raw.png");
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.premultiplyAlpha = false;
+  return tex;
 }
 
-// Singleton — created once when the module loads, shared by every billboard
-const SHARED_TEXTURES = preloadTextures();
+let SHARED_RAW_TEXTURE: THREE.Texture | null = null;
+function getRawTexture() {
+  if (!SHARED_RAW_TEXTURE) {
+    SHARED_RAW_TEXTURE = loadRawTexture();
+  }
+  return SHARED_RAW_TEXTURE;
+}
 
-// ─── Custom shader: discards near-white background pixels ─────────────────────
-
-// ─── Simple pass-through shaders using native PNG alpha ───────────────────────
-// Images now have real transparent backgrounds — no luma hacking needed.
-// This is far more reliable across all mobile GPUs (Samsung Mali, Adreno, etc.)
-
+// ─── GLSL Pass-through Shader ────────────────────────────────────────────────
 const VERTEX_SHADER = /* glsl */ `
   precision mediump float;
   varying vec2 vUv;
@@ -62,8 +44,7 @@ const FRAGMENT_SHADER = /* glsl */ `
   }
 `;
 
-// ─── Seeded deterministic RNG ─────────────────────────────────────────────────
-
+// ─── Deterministic RNG ────────────────────────────────────────────────────────
 function seededRNG(seed: number) {
   let s = seed;
   return () => {
@@ -72,157 +53,141 @@ function seededRNG(seed: number) {
   };
 }
 
-// ─── Global mouse tracker ─────────────────────────────────────────────────────
+// Global scroll state
+const scrollState = { progress: 0 };
 
-const globalMouse = { x: 0, y: 0 };
-
-// ─── Single cashew billboard ──────────────────────────────────────────────────
-
-function CashewBillboard({
-  position,
+// ─── Single Particle Cashew Billboard with Physics Entrance & Scroll Fill ─────
+function ParticleCashewBillboard({
+  basePosition,
   size,
-  variant,
-  rotSpeed,
+  dropDelay,
+  dropDistance,
+  tumbleSpeed,
   rotOffset,
-  floatAmp,
-  floatFreq,
-  floatPhase,
+  swayFreq,
+  swayAmp,
+  cascadeFactor,
 }: {
-  position: [number, number, number];
+  basePosition: [number, number, number];
   size: number;
-  variant: Variant;
-  rotSpeed: number;
+  dropDelay: number;
+  dropDistance: number;
+  tumbleSpeed: number;
   rotOffset: number;
-  floatAmp: number;
-  floatFreq: number;
-  floatPhase: number;
+  swayFreq: number;
+  swayAmp: number;
+  cascadeFactor: number;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
 
-  // ── Use the SHARED texture for this variant — no extra WebGL texture allocation
   const material = useMemo(
     () =>
       new THREE.ShaderMaterial({
-        uniforms: { map: { value: SHARED_TEXTURES[variant] } },
+        uniforms: { map: { value: getRawTexture() } },
         vertexShader: VERTEX_SHADER,
         fragmentShader: FRAGMENT_SHADER,
         transparent: true,
         depthWrite: false,
         side: THREE.DoubleSide,
       }),
-    [variant]
+    []
   );
 
-  const baseY = position[1];
-  // Store current rotation angle to avoid additive accumulation bug
-  const rotAngle = useRef(rotOffset);
+  const [baseX, baseY] = basePosition;
 
   useFrame((state) => {
     if (!meshRef.current) return;
-    const t = state.clock.elapsedTime;
+    const elapsedTime = state.clock.elapsedTime;
+    const p = scrollState.progress;
 
-    // Billboard: always face camera
+    // 1. Billboard orientation: face camera
     meshRef.current.quaternion.copy(state.camera.quaternion);
 
-    // In-plane spin: compute absolute angle, not additive delta
-    rotAngle.current = rotOffset + t * rotSpeed;
-    meshRef.current.rotateZ(rotAngle.current);
+    // 2. Entrance "Particle Fill" Drop Progress (0 to 1 with spring easing)
+    const activeTime = Math.max(0, elapsedTime - dropDelay);
+    const dropDuration = 1.2;
+    const rawDropProgress = Math.min(activeTime / dropDuration, 1.0);
+    // Cubic ease-out with slight bounce
+    const easeDrop = 1 - Math.pow(1 - rawDropProgress, 3);
 
-    // Gentle float
-    meshRef.current.position.y =
-      baseY + Math.sin(t * floatFreq + floatPhase) * floatAmp;
+    // Initial shower drop distance: starts above screen, drops into place
+    const entranceOffsetY = (1 - easeDrop) * dropDistance;
 
-    // ── Camera parallax is NOT here any more ──
-    // It was the #1 perf bug: previously ran 32× per frame (once per cashew).
-    // Now handled once per frame inside CameraController below.
+    // 3. Organic Scroll & Float Physics
+    const scrollOffsetY = p * 14 * cascadeFactor;
+    const swayX = Math.sin(elapsedTime * swayFreq + rotOffset) * swayAmp;
+    const swayY = Math.cos(elapsedTime * (swayFreq * 0.8) + rotOffset) * (swayAmp * 0.5);
+
+    // Final Y & X position calculation
+    meshRef.current.position.y = baseY + entranceOffsetY - scrollOffsetY + swayY;
+    meshRef.current.position.x = baseX + swayX + Math.sin(p * Math.PI * 1.5 + rotOffset) * 1.2;
+
+    // 4. Organic Tumble & Rotation
+    const entranceRot = (1 - easeDrop) * Math.PI * 2;
+    const scrollRot = p * Math.PI * 4 * tumbleSpeed;
+    const ambientRot = Math.sin(elapsedTime * 0.5 + rotOffset) * 0.15;
+
+    meshRef.current.rotation.z = rotOffset + entranceRot + scrollRot + ambientRot;
+
+    // 5. Scale progress: slightly grows as it drops in & expands on scroll
+    const currentScale = size * (0.4 + 0.6 * easeDrop) * (1.0 + p * 0.3);
+    meshRef.current.scale.set(currentScale, currentScale, 1);
   });
 
   return (
-    <mesh ref={meshRef} position={position} material={material}>
-      <planeGeometry args={[size, size]} />
+    <mesh ref={meshRef} position={basePosition} material={material}>
+      <planeGeometry args={[1, 1]} />
     </mesh>
   );
 }
 
-// ─── Camera parallax controller — runs ONCE per frame ─────────────────────────
-
-function CameraController() {
-  useFrame((state) => {
-    state.camera.position.x = THREE.MathUtils.lerp(
-      state.camera.position.x,
-      globalMouse.x * 3.5,
-      0.04
-    );
-    state.camera.position.y = THREE.MathUtils.lerp(
-      state.camera.position.y,
-      globalMouse.y * 2.0,
-      0.04
-    );
-    state.camera.lookAt(0, 0, 0);
-  });
-  return null;
-}
-
-// ─── Generate cashews deterministically ───────────────────────────────────────
-
-function generateCashews(count: number) {
-  const rng = seededRNG(77);
+// ─── Generate 22 Organic Raw Cashew Particles ─────────────────────────────────
+function generateRawCashewParticles(count: number) {
+  const rng = seededRNG(202);
   return Array.from({ length: count }, (_, i) => {
-    const variant = VARIANTS[i % VARIANTS.length];
-    const z = -4 + rng() * 6;
-    const depthScale = 1.0 + (z + 4) * 0.14;
+    const z = -3.5 + rng() * 5.5;
     return {
       id: i,
-      variant,
-      position: [
-        (rng() - 0.5) * 20,
-        (rng() - 0.5) * 13,
+      basePosition: [
+        (rng() - 0.5) * 19,
+        (rng() - 0.5) * 11 + 0.5,
         z,
       ] as [number, number, number],
-      size: (1.0 + rng() * 0.7) * depthScale,
-      rotSpeed: (rng() - 0.5) * 0.18,
+      size: 1.3 + rng() * 1.3,
+      dropDelay: rng() * 0.7,            // Staggered shower entry delay
+      dropDistance: 10 + rng() * 8,       // Starts 10-18 units above screen
+      tumbleSpeed: (rng() - 0.5) * 1.8,   // Organic positive or negative tumble speed
       rotOffset: rng() * Math.PI * 2,
-      floatAmp: 0.07 + rng() * 0.1,
-      floatFreq: 0.35 + rng() * 0.55,
-      floatPhase: rng() * Math.PI * 2,
+      swayFreq: 0.6 + rng() * 0.8,
+      swayAmp: 0.15 + rng() * 0.25,
+      cascadeFactor: 0.6 + rng() * 0.9,
     };
   });
 }
 
-// Reduced from 32 → 20 cashews. Visually identical but ~37% fewer draw calls.
-const CASHEW_DATA = generateCashews(20);
+const RAW_PARTICLES = generateRawCashewParticles(22);
 
-function Scene() {
-  const { width } = useThree((state) => state.viewport);
+function RawParticleScene() {
   return (
     <>
-      <CameraController />
-      {CASHEW_DATA.map((c) => {
-        const effectiveWidth = Math.max(width, 14);
-        const normX = c.position[0] / 10;
-        const dynamicX = normX * (effectiveWidth * 0.75);
-        return (
-          <CashewBillboard
-            key={c.id}
-            {...c}
-            position={[dynamicX, c.position[1], c.position[2]]}
-          />
-        );
-      })}
+      {RAW_PARTICLES.map((c) => (
+        <ParticleCashewBillboard key={c.id} {...c} />
+      ))}
     </>
   );
 }
 
-// ─── Exported Canvas wrapper ──────────────────────────────────────────────────
-
+// ─── Exported Canvas Wrapper ──────────────────────────────────────────────────
 export function CashewSceneInner() {
   useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      globalMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-      globalMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    const handleScroll = () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      scrollState.progress = docHeight > 0 ? Math.min(Math.max(window.scrollY / docHeight, 0), 1) : 0;
     };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -235,9 +200,9 @@ export function CashewSceneInner() {
         powerPreference: "high-performance",
       }}
       style={{ background: "transparent" }}
-      dpr={[1, 1.5]}  // Was [1, 2] — halves fill-rate on Retina screens
+      dpr={[1, 1.5]}
     >
-      <Scene />
+      <RawParticleScene />
     </Canvas>
   );
 }

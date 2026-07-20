@@ -9,6 +9,7 @@ import { CashewScene } from "@/components/3d/cashew-scene";
 import { ArrowRight, Globe, ShieldCheck, Tractor, Ship } from "lucide-react";
 import BlurText from "@/components/ui/blur-text";
 import DotField from "@/components/ui/dot-field";
+import { triggerHaptic } from "@/lib/haptics";
 
 // ─── Reusable animation variants ─────────────────────────────────────────────
 
@@ -336,6 +337,7 @@ export default function HomePage() {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/business"
+                onClick={() => triggerHaptic('light')}
                 className="block text-center font-button-text text-button-text bg-accent text-on-accent px-8 py-4 border-2 border-accent hover:bg-white hover:text-primary transition-all duration-300 shadow-[4px_4px_0px_0px_#ffffff] text-xl"
               >
                 EXPLORE THE CHAIN
@@ -344,7 +346,10 @@ export default function HomePage() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              onClick={openInquiry}
+              onClick={() => {
+                triggerHaptic('medium');
+                openInquiry();
+              }}
               className="text-center font-button-text text-button-text bg-white/10 text-white px-8 py-4 border-2 border-white hover:bg-white hover:text-primary transition-all duration-300 shadow-[4px_4px_0px_0px_#18FF00] text-xl"
             >
               WHOLESALE INQUIRY

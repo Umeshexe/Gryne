@@ -8,6 +8,7 @@ import { X, Send, Check, Loader2, AlertCircle } from "lucide-react";
 import { useInquiry } from "@/context/inquiry-context";
 import { useSubmitInquiry } from "@/features/inquiries/hooks";
 import { inquirySchema, type InquiryFormData } from "@/features/inquiries/schemas";
+import { triggerHaptic } from "@/lib/haptics";
 
 // ─── Field Error Component ────────────────────────────────────────────────────
 
@@ -57,6 +58,7 @@ export default function WholesaleInquiryModal() {
   });
 
   const onSubmit = (data: InquiryFormData) => {
+    triggerHaptic('medium');
     mutate(data);
   };
 

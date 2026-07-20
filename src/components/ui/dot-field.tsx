@@ -112,6 +112,19 @@ const DotField = memo(({
       mouseRef.current.y = e.pageY - s.offsetY;
     }
 
+    function onTouchMove(e: TouchEvent) {
+      if (e.touches && e.touches[0]) {
+        const s = sizeRef.current;
+        mouseRef.current.x = e.touches[0].pageX - s.offsetX;
+        mouseRef.current.y = e.touches[0].pageY - s.offsetY;
+      }
+    }
+
+    function onTouchEnd() {
+      mouseRef.current.x = -9999;
+      mouseRef.current.y = -9999;
+    }
+
     function updateMouseSpeed() {
       const m = mouseRef.current;
       const dx = m.prevX - m.x;
@@ -229,6 +242,10 @@ const DotField = memo(({
     doResize();
     window.addEventListener('resize', resize);
     window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('touchstart', onTouchMove, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
+    window.addEventListener('touchcancel', onTouchEnd, { passive: true });
     rafRef.current = requestAnimationFrame(tick);
 
     rebuildRef.current = () => {
@@ -242,6 +259,10 @@ const DotField = memo(({
       clearTimeout(resizeTimer);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchstart', onTouchMove);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
+      window.removeEventListener('touchcancel', onTouchEnd);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
