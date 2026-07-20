@@ -48,27 +48,9 @@ const FRAGMENT_SHADER = /* glsl */ `
 const scrollState = { progress: 0 };
 const pointerWorld = { x: -9999, y: -9999, active: false };
 
-interface CashewParticleData {
-  id: string;
-  normalizedX: number; // -0.5 to 0.5 across viewport width
-  normalizedY: number; // 0.0 (bottom edge) to 1.0 (top edge)
-  z: number;
-  size: number;
-  dropDelay: number;
-  dropDistance: number;
-  tumbleSpeed: number;
-  rotOffset: number;
-  swayFreq: number;
-  swayAmp: number;
-  overflowSpeed: number;
-  isBaseBed: boolean;
-}
-
 // ─── Interactive Cashew Billboard with Cursor/Touch Avoidance ───────────────
 function CashewBillboard({
-  normalizedX,
-  normalizedY,
-  z,
+  basePosition,
   size,
   dropDelay,
   dropDistance,
@@ -78,7 +60,18 @@ function CashewBillboard({
   swayAmp,
   overflowSpeed,
   isBaseBed,
-}: CashewParticleData) {
+}: {
+  basePosition: [number, number, number];
+  size: number;
+  dropDelay: number;
+  dropDistance: number;
+  tumbleSpeed: number;
+  rotOffset: number;
+  swayFreq: number;
+  swayAmp: number;
+  overflowSpeed: number;
+  isBaseBed?: boolean;
+}) {
   const meshRef = useRef<THREE.Mesh>(null);
   const pushOffset = useRef({ x: 0, y: 0 });
 
@@ -95,32 +88,17 @@ function CashewBillboard({
     []
   );
 
+  const [baseX, baseY] = basePosition;
+
   useFrame((state) => {
     if (!meshRef.current) return;
     const elapsedTime = state.clock.elapsedTime;
     const p = scrollState.progress;
-    const { width: vWidth, height: vHeight } = state.viewport;
 
     // 1. Billboard orientation: face camera
     meshRef.current.quaternion.copy(state.camera.quaternion);
 
-    // 2. Dynamic Viewport Coordinate Calculation
-    // Base Y calculation relative to dynamic viewport height
-    const bottomEdgeY = -vHeight / 2;
-    let computedBaseY: number;
-    let computedBaseX = normalizedX * vWidth * 1.1;
-
-    if (isBaseBed) {
-      // Bottom 30% Bed: Pads starting y slightly above absolute bottom so taskbars never hide cashews
-      const bedMinY = bottomEdgeY + 0.35;
-      const bedMaxY = bottomEdgeY + vHeight * 0.28;
-      computedBaseY = bedMinY + normalizedY * (bedMaxY - bedMinY);
-    } else {
-      // Upper Floating Layer (35% to 90% viewport height)
-      computedBaseY = bottomEdgeY + vHeight * (0.35 + normalizedY * 0.55);
-    }
-
-    // 3. Initial Drop Entrance: Shower down on load & settle
+    // 2. Initial Drop Entrance: Shower down on load & settle
     const activeTime = Math.max(0, elapsedTime - dropDelay);
     const dropDuration = 1.2;
     const rawProgress = Math.min(activeTime / dropDuration, 1.0);
@@ -128,18 +106,18 @@ function CashewBillboard({
     const bounceSettle = Math.sin(rawProgress * Math.PI * 1.5) * (1 - rawProgress) * 0.3;
     const entranceOffsetY = (1 - dropEase) * dropDistance + bounceSettle;
 
-    // 4. Ambient float vs stationary base bed
+    // 3. Ambient float vs stationary base bed
     const swayX = isBaseBed ? 0 : Math.sin(elapsedTime * swayFreq + rotOffset) * swayAmp;
     const swayY = isBaseBed ? 0 : Math.cos(elapsedTime * (swayFreq * 0.7) + rotOffset) * (swayAmp * 0.4);
 
-    // 5. Scroll Overflow Physics
+    // 4. Scroll Overflow Physics
     const overflowRiseY = p * 13 * overflowSpeed;
 
     // Target positions before cursor repulsion
-    const targetX = computedBaseX + swayX + Math.sin(p * Math.PI * 2 + rotOffset) * (isBaseBed ? 0.3 : 1.1);
-    const targetY = computedBaseY + entranceOffsetY + overflowRiseY + swayY;
+    const targetX = baseX + swayX + Math.sin(p * Math.PI * 2 + rotOffset) * (isBaseBed ? 0.4 : 1.2);
+    const targetY = baseY + entranceOffsetY + overflowRiseY + swayY;
 
-    // 6. Cursor & Touch Repulsion Physics ("move around cursor/touch")
+    // 5. Cursor & Touch Repulsion Physics ("move around cursor/touch")
     let targetPushX = 0;
     let targetPushY = 0;
 
@@ -162,9 +140,8 @@ function CashewBillboard({
 
     meshRef.current.position.x = targetX + pushOffset.current.x;
     meshRef.current.position.y = targetY + pushOffset.current.y;
-    meshRef.current.position.z = z;
 
-    // 7. Tumbling & Rotation
+    // 6. Tumbling & Rotation
     const entranceRot = (1 - dropEase) * Math.PI * 2;
     const scrollRot = p * Math.PI * 3 * tumbleSpeed;
     const ambientRot = isBaseBed ? 0 : Math.sin(elapsedTime * 0.5 + rotOffset) * 0.15;
@@ -172,14 +149,13 @@ function CashewBillboard({
 
     meshRef.current.rotation.z = rotOffset + entranceRot + scrollRot + ambientRot + pushRot;
 
-    // 8. Scale: Maintain bold, prominent size across all screen sizes (prevent shrinking on mobile)
-    const responsiveScaleFactor = Math.max(0.95, Math.min(vWidth / 11, 1.15));
-    const currentScale = size * responsiveScaleFactor * (0.4 + 0.6 * dropEase) * (1.0 + p * 0.3);
+    // 7. Scale
+    const currentScale = size * (0.4 + 0.6 * dropEase) * (1.0 + p * 0.3);
     meshRef.current.scale.set(currentScale, currentScale, 1);
   });
 
   return (
-    <mesh ref={meshRef} material={material}>
+    <mesh ref={meshRef} position={basePosition} material={material}>
       <planeGeometry args={[1, 1]} />
     </mesh>
   );
@@ -238,22 +214,20 @@ function PointerTracker() {
   return null;
 }
 
-// ─── Generate Dynamic Fully Randomized Normalized Cashew Positions ──────────
-function generateRandomizedCashewLayers(): CashewParticleData[] {
-  const items: CashewParticleData[] = [];
+// ─── Generate Dynamic Fully Randomized Cashew Positions on Every Load ────────
+function generateRandomizedCashewLayers() {
+  const items = [];
 
   // ── Tier 1: Dense Base Bed (34 Cashews densely packing bottom 30%) ──────────
   for (let i = 0; i < 34; i++) {
     const z = -3.0 + Math.random() * 4.5;
-    const normalizedX = -0.5 + (i / 33) * 1.0 + (Math.random() - 0.5) * 0.06;
-    const normalizedY = Math.random(); // 0.0 (bottom edge) to 1.0 (30% height)
+    const x = -11.5 + (i / 33) * 23 + (Math.random() - 0.5) * 1.4;
+    const y = -5.8 + Math.random() * 2.8;
 
     items.push({
       id: `base-${i}`,
-      normalizedX,
-      normalizedY,
-      z,
-      size: 2.1 + Math.random() * 1.4,
+      basePosition: [x, y, z] as [number, number, number],
+      size: 2.2 + Math.random() * 1.5,
       dropDelay: Math.random() * 0.65,
       dropDistance: 15 + Math.random() * 8,
       tumbleSpeed: (Math.random() - 0.5) * 1.2,
@@ -267,24 +241,22 @@ function generateRandomizedCashewLayers(): CashewParticleData[] {
 
   // ── Tier 2: 3-Zone Balanced Upper Floating Layer (18 Floating Cashews) ──────
   const zones = [
-    { name: "left", xMin: -0.45, xMax: -0.18, count: 6 },
-    { name: "center", xMin: -0.14, xMax: 0.14, count: 6 },
-    { name: "right", xMin: 0.18, xMax: 0.45, count: 6 },
+    { name: "left", xMin: -9.5, xMax: -3.5, count: 6 },
+    { name: "center", xMin: -2.8, xMax: 2.8, count: 6 },
+    { name: "right", xMin: 3.5, xMax: 9.5, count: 6 },
   ];
 
   let idCount = 0;
   zones.forEach((zone) => {
     for (let i = 0; i < zone.count; i++) {
       const z = -2.5 + Math.random() * 4.0;
-      const normalizedX = zone.xMin + Math.random() * (zone.xMax - zone.xMin);
-      const normalizedY = Math.random(); // 0.0 to 1.0 mapped to upper layer
+      const x = zone.xMin + Math.random() * (zone.xMax - zone.xMin);
+      const y = -1.0 + Math.random() * 5.6;
 
       items.push({
         id: `float-${zone.name}-${idCount++}`,
-        normalizedX,
-        normalizedY,
-        z,
-        size: 1.3 + Math.random() * 1.1,
+        basePosition: [x, y, z] as [number, number, number],
+        size: 1.4 + Math.random() * 1.1,
         dropDelay: 0.2 + Math.random() * 0.5,
         dropDistance: 12 + Math.random() * 8,
         tumbleSpeed: (Math.random() - 0.5) * 1.8,
@@ -301,6 +273,7 @@ function generateRandomizedCashewLayers(): CashewParticleData[] {
 }
 
 function CashewSceneComposition() {
+  // Generate a brand-new randomized arrangement every single time the page loads / mounts!
   const cashewParticles = useMemo(() => generateRandomizedCashewLayers(), []);
 
   return (
