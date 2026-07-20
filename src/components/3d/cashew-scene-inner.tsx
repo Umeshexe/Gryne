@@ -172,8 +172,8 @@ function CashewBillboard({
 
     meshRef.current.rotation.z = rotOffset + entranceRot + scrollRot + ambientRot + pushRot;
 
-    // 8. Scale (responsive to screen aspect ratio)
-    const responsiveScaleFactor = Math.min(vWidth / 14, 1.2);
+    // 8. Scale: Maintain bold, prominent size across all screen sizes (prevent shrinking on mobile)
+    const responsiveScaleFactor = Math.max(0.95, Math.min(vWidth / 11, 1.15));
     const currentScale = size * responsiveScaleFactor * (0.4 + 0.6 * dropEase) * (1.0 + p * 0.3);
     meshRef.current.scale.set(currentScale, currentScale, 1);
   });
