@@ -40,7 +40,11 @@ export const metadata: Metadata = {
   description:
     "Premium grade wholesale cashews sourced with uncompromising integrity. Controlling the direct supply chain from West African soils to precision mills in India.",
   keywords: ["cashews", "wholesale", "bulk cashew supply", "Africa to India", "B2B agriculture", "premium cashews", "Gryne"],
-
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   authors: [{ name: "Gryne Cashews Syndicate" }],
   openGraph: {
     title: "GRYNE CASHEWS | Bold By Nature",
