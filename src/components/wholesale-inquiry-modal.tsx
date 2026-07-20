@@ -42,7 +42,7 @@ export default function WholesaleInquiryModal() {
       companyName: "",
       email: "",
       grade: "W240",
-      volume: "10-50",
+      volume: "100-300kg",
       message: "",
       website: "",
       fax: "",
@@ -207,13 +207,16 @@ export default function WholesaleInquiryModal() {
 
                       <div className="flex flex-col">
                         <label className="font-label-caps text-[12px] text-primary mb-1">
-                          Est. Volume (Tons) *
+                          Est. Volume *
                         </label>
                         <select
                           {...register("volume")}
                           className={`${inputClass} cursor-pointer`}
                           aria-invalid={!!errors.volume}
                         >
+                          <option value="100-300kg">100 - 300 KGS</option>
+                          <option value="300-500kg">300 - 500 KGS</option>
+                          <option value="500kg-1ton">500 KGS - 1 TON</option>
                           <option value="1-10">1 - 10 TONS</option>
                           <option value="10-50">10 - 50 TONS</option>
                           <option value="50-200">50 - 200 TONS</option>

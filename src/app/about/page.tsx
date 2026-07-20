@@ -367,18 +367,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 6. Brands We Supply ── */}
+      {/* ── 6. Our Brands ── */}
       <section className="bg-vibrant-yellow border-t-4 border-b-4 border-primary w-full py-section-gap overflow-hidden">
         <div className="px-6 md:px-margin-safe max-w-[1440px] mx-auto w-full mb-16">
           <ScrollSection className="text-center">
             <motion.span variants={fadeUp} transition={{ duration: 0.5 }} className="font-label-caps text-label-caps bg-primary text-on-primary px-3 py-1 border-2 border-primary shadow-[2px_2px_0px_0px_#3B28FF] mb-4 inline-block">
-              OUR CLIENTS
+              OUR BRANDS
             </motion.span>
             <motion.h2 variants={fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="font-headline-lg text-[44px] leading-tight md:text-headline-lg text-primary uppercase mb-4">
-              Brands We Supply
+              OUR BRANDS
             </motion.h2>
             <motion.p variants={fadeUp} transition={{ duration: 0.5, delay: 0.2 }} className="font-body-lg text-body-lg text-primary/80 max-w-2xl mx-auto">
-              Trusted by premium snack brands, confectionery houses, and food manufacturers across 24 countries.
+              Trusted by premium snack brands, confectionery houses, and food manufacturers across 10+ countries.
             </motion.p>
           </ScrollSection>
         </div>
@@ -416,9 +416,9 @@ export default function AboutPage() {
         <div className="px-6 md:px-margin-safe max-w-[1440px] mx-auto w-full mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {[
-              { num: "24+", label: "Export Countries" },
+              { num: "10+", label: "Export Countries" },
               { num: "140+", label: "Active B2B Clients" },
-              { num: "12,000+", label: "Tonnes Shipped in 2024" },
+              { num: "7+", label: "Tonnes Shipped in 2024" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}

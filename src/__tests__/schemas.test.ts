@@ -77,7 +77,7 @@ describe("inquirySchema", () => {
   // ── volume ────────────────────────────────────────────────────────────────────
 
   it("accepts all valid volume options", () => {
-    const volumes = ["1-10", "10-50", "50-200", "200+"] as const;
+    const volumes = ["100-300kg", "300-500kg", "500kg-1ton", "1-10", "10-50", "50-200", "200+"] as const;
     for (const volume of volumes) {
       const result = inquirySchema.safeParse({ ...validPayload, volume });
       expect(result.success).toBe(true);

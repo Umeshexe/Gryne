@@ -15,7 +15,7 @@ export const inquirySchema = z.object({
   grade: z.enum(["W180", "W240", "W320", "LWP"] as const, {
     message: "Please select a cashew grade",
   }),
-  volume: z.enum(["1-10", "10-50", "50-200", "200+"] as const, {
+  volume: z.enum(["100-300kg", "300-500kg", "500kg-1ton", "1-10", "10-50", "50-200", "200+"] as const, {
     message: "Please select an estimated volume",
   }),
   message: z

@@ -304,44 +304,6 @@ export default function HomePage() {
           <CashewScene />
         </div>
 
-        {/* Floating label badges */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          <motion.div
-            className="absolute top-[20%] left-[10%] w-24 h-24 md:w-32 md:h-32 bg-primary/10 rounded-full flex items-center justify-center mix-blend-multiply opacity-80"
-            animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <span className="font-label-caps text-xs text-primary/70 bg-canvas-cream px-2 py-1 sticker shadow-[2px_2px_0px_0px_#3B28FF]">
-              RAW SEED
-            </span>
-          </motion.div>
-
-          <motion.div
-            className="absolute top-[40%] right-[12%] w-28 h-28 md:w-36 md:h-36 bg-tertiary/10 rounded-full flex items-center justify-center mix-blend-multiply opacity-90"
-            animate={{ y: [0, -18, 0], rotate: [0, -5, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          >
-            <span className="font-label-caps text-xs text-primary bg-white px-2 py-1 sticker shadow-[2px_2px_0px_0px_#3B28FF]">
-              W240 JUMBO
-            </span>
-          </motion.div>
-
-          <motion.div
-            className="absolute bottom-[20%] left-[20%] w-20 h-20 md:w-24 md:h-24 bg-electric-blue/10 rounded-full flex items-center justify-center mix-blend-multiply opacity-70"
-            animate={{ y: [0, -15, 0], rotate: [0, 8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          >
-            <span className="font-label-caps text-[10px] text-white bg-black px-2 py-1 sticker shadow-[2px_2px_0px_0px_#2E5BFF]">
-              WEST AFRICA
-            </span>
-          </motion.div>
-        </motion.div>
-
         {/* Hero Content */}
         <div className="relative z-20 text-center px-6 md:px-gutter max-w-4xl">
           <motion.div
