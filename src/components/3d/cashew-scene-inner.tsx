@@ -44,15 +44,6 @@ const FRAGMENT_SHADER = /* glsl */ `
   }
 `;
 
-// ─── Deterministic RNG ────────────────────────────────────────────────────────
-function seededRNG(seed: number) {
-  let s = seed;
-  return () => {
-    s = (s * 1664525 + 1013904223) & 0xffffffff;
-    return (s >>> 0) / 0xffffffff;
-  };
-}
-
 // Global scroll & pointer interaction state
 const scrollState = { progress: 0 };
 const pointerWorld = { x: -9999, y: -9999, active: false };
@@ -134,16 +125,16 @@ function CashewBillboard({
       const dx = targetX - pointerWorld.x;
       const dy = targetY - pointerWorld.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const radius = 3.8; // Repulsion aura radius
+      const radius = 3.8;
 
       if (dist < radius && dist > 0.01) {
-        const force = (1 - dist / radius) * 2.2; // Push strength
+        const force = (1 - dist / radius) * 2.2;
         targetPushX = (dx / dist) * force;
         targetPushY = (dy / dist) * force;
       }
     }
 
-    // Smooth lerp push offsets (gentle repulsion & return)
+    // Smooth lerp push offsets
     pushOffset.current.x += (targetPushX - pushOffset.current.x) * 0.12;
     pushOffset.current.y += (targetPushY - pushOffset.current.y) * 0.12;
 
@@ -189,7 +180,6 @@ function PointerTracker() {
         return;
       }
 
-      // Convert screen coords to Three.js camera viewport coordinates
       const normX = (clientX / window.innerWidth) * 2 - 1;
       const normY = -(clientY / window.innerHeight) * 2 + 1;
 
@@ -224,37 +214,32 @@ function PointerTracker() {
   return null;
 }
 
-// ─── Generate Even 3-Zone Spatial Distribution + Dense Bottom Bed ─────────────
-function generateBalancedCashewLayers() {
-  const rng = seededRNG(505);
+// ─── Generate Dynamic Fully Randomized Cashew Positions on Every Load ────────
+function generateRandomizedCashewLayers() {
   const items = [];
 
-  // ── Tier 1: Dense Base Bed (34 Cashews tightly packing bottom 30%) ──────────
+  // ── Tier 1: Dense Base Bed (34 Cashews densely packing bottom 30%) ──────────
   for (let i = 0; i < 34; i++) {
-    const z = -3.0 + rng() * 4.5;
-    const x = -11.5 + (i / 33) * 23 + (rng() - 0.5) * 1.2;
-    const y = -5.8 + rng() * 2.8;
+    const z = -3.0 + Math.random() * 4.5;
+    const x = -11.5 + (i / 33) * 23 + (Math.random() - 0.5) * 1.4;
+    const y = -5.8 + Math.random() * 2.8;
 
     items.push({
       id: `base-${i}`,
       basePosition: [x, y, z] as [number, number, number],
-      size: 2.2 + rng() * 1.5,
-      dropDelay: rng() * 0.6,
-      dropDistance: 15 + rng() * 8,
-      tumbleSpeed: (rng() - 0.5) * 1.2,
-      rotOffset: rng() * Math.PI * 2,
+      size: 2.2 + Math.random() * 1.5,
+      dropDelay: Math.random() * 0.65,
+      dropDistance: 15 + Math.random() * 8,
+      tumbleSpeed: (Math.random() - 0.5) * 1.2,
+      rotOffset: Math.random() * Math.PI * 2,
       swayFreq: 0,
       swayAmp: 0,
-      overflowSpeed: 0.85 + rng() * 0.8,
+      overflowSpeed: 0.85 + Math.random() * 0.8,
       isBaseBed: true,
     });
   }
 
   // ── Tier 2: 3-Zone Balanced Upper Floating Layer (18 Floating Cashews) ──────
-  // Zone 1: Left Column (35% density -> 6 cashews)  : x between -9.5 and -3.5
-  // Zone 2: Center Column (30% density -> 6 cashews): x between -2.8 and +2.8
-  // Zone 3: Right Column (35% density -> 6 cashews) : x between +3.5 and +9.5
-
   const zones = [
     { name: "left", xMin: -9.5, xMax: -3.5, count: 6 },
     { name: "center", xMin: -2.8, xMax: 2.8, count: 6 },
@@ -264,21 +249,21 @@ function generateBalancedCashewLayers() {
   let idCount = 0;
   zones.forEach((zone) => {
     for (let i = 0; i < zone.count; i++) {
-      const z = -2.5 + rng() * 4.0;
-      const x = zone.xMin + (i / (zone.count - 1)) * (zone.xMax - zone.xMin) + (rng() - 0.5) * 0.8;
-      const y = -1.0 + rng() * 5.6;
+      const z = -2.5 + Math.random() * 4.0;
+      const x = zone.xMin + Math.random() * (zone.xMax - zone.xMin);
+      const y = -1.0 + Math.random() * 5.6;
 
       items.push({
         id: `float-${zone.name}-${idCount++}`,
         basePosition: [x, y, z] as [number, number, number],
-        size: 1.4 + rng() * 1.1,
-        dropDelay: 0.2 + rng() * 0.5,
-        dropDistance: 12 + rng() * 8,
-        tumbleSpeed: (rng() - 0.5) * 1.8,
-        rotOffset: rng() * Math.PI * 2,
-        swayFreq: 0.6 + rng() * 0.7,
-        swayAmp: 0.25 + rng() * 0.35,
-        overflowSpeed: 0.7 + rng() * 0.9,
+        size: 1.4 + Math.random() * 1.1,
+        dropDelay: 0.2 + Math.random() * 0.5,
+        dropDistance: 12 + Math.random() * 8,
+        tumbleSpeed: (Math.random() - 0.5) * 1.8,
+        rotOffset: Math.random() * Math.PI * 2,
+        swayFreq: 0.6 + Math.random() * 0.7,
+        swayAmp: 0.25 + Math.random() * 0.35,
+        overflowSpeed: 0.7 + Math.random() * 0.9,
         isBaseBed: false,
       });
     }
@@ -287,13 +272,14 @@ function generateBalancedCashewLayers() {
   return items;
 }
 
-const BALANCED_CASHEW_PARTICLES = generateBalancedCashewLayers();
-
 function CashewSceneComposition() {
+  // Generate a brand-new randomized arrangement every single time the page loads / mounts!
+  const cashewParticles = useMemo(() => generateRandomizedCashewLayers(), []);
+
   return (
     <>
       <PointerTracker />
-      {BALANCED_CASHEW_PARTICLES.map((c) => (
+      {cashewParticles.map((c) => (
         <CashewBillboard key={c.id} {...c} />
       ))}
     </>
