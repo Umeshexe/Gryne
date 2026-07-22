@@ -68,13 +68,13 @@ export default function NavBar() {
           >
             <Link href="/" className="block hover:scale-105 transition-transform duration-300">
               <Image
-                src="/logo/Gryne Rectangle.png"
-                alt="Gryne Cashews"
-                width={240}
-                height={96}
-                className="h-[72px] md:h-[96px] w-auto object-contain drop-shadow-[0_4px_12px_rgba(59,40,255,0.12)]"
-                priority
-              />
+              src="/assets/brand/Gryne Rectangle.png"
+              alt="Gryne Cashews"
+              width={180}
+              height={72}
+              className="h-14 md:h-16 w-auto object-contain cursor-pointer"
+              priority
+            />
             </Link>
           </motion.div>
 

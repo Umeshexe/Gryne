@@ -213,14 +213,14 @@ export default function CSRPage() {
           >
             <div className="aspect-[4/5] bg-secondary-container border-4 border-primary overflow-hidden shadow-[8px_8px_0px_0px_rgba(59,40,255,1)] relative z-0 group">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs"
-                alt="Farmer holding cashews"
+                src="/assets/unit-2/IMG-20250925-WA0039.jpg"
+                alt="Gryne Unit 2 Bulk Storage & Warehouse"
                 fill
                 className="object-cover filter brightness-105 group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 500px"
               />
               <div className="absolute bottom-4 left-4 font-label-caps text-[10px] bg-black text-white px-3 py-1 border-2 border-white">
-                ORIGIN: WEST AFRICA
+                FACILITY: UNIT 2 WAREHOUSE
               </div>
             </div>
           </motion.div>

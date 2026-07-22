@@ -317,24 +317,38 @@ export default function ContactPage() {
 
             <DetailCard
               icon={MapPin}
-              title="FACTORY & REGISTERED OFFICE"
+              title="HEAD OFFICE"
               lines={[
-                "GRYNE PVT LTD.",
-                "Plot No : 01, Industrial Park,",
+                "SRI GANESH CASHEW INDUSTRY",
+                "Door No : 19.2.242/A, Srinivasanagar",
                 "Palasa, Andhra Pradesh - 532221"
               ]}
               accent=""
             />
             <DetailCard
-              icon={Mail}
-              title="EMAIL"
-              lines={["info@gryne.global", "trade@gryne.in"]}
+              icon={MapPin}
+              title="UNIT 1 PROCESSING PLANT"
+              lines={[
+                "86/B Industrial Park",
+                "Palasa, Srikakulam District",
+                "Andhra Pradesh - 532221"
+              ]}
               accent=""
             />
             <DetailCard
-              icon={Globe}
-              title="WEBSITE & INSTAGRAM"
-              lines={["www.gryne.in", "gryne.in"]}
+              icon={MapPin}
+              title="UNIT 2 PROCESSING PLANT"
+              lines={[
+                "Sri Ganesh Cashew Industry, Komaravolu Village",
+                "Rolugunta Mandal, Anakapalli District",
+                "Andhra Pradesh - 531114"
+              ]}
+              accent=""
+            />
+            <DetailCard
+              icon={Mail}
+              title="EMAIL & ONLINE"
+              lines={["info@gryne.global", "www.gryne.in", "Instagram: @gryne.in"]}
               accent=""
             />
 

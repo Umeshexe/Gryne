@@ -8,7 +8,7 @@ import * as THREE from "three";
 function loadRawTexture(): THREE.Texture {
   if (typeof window === "undefined") return new THREE.Texture();
   const loader = new THREE.TextureLoader();
-  const tex = loader.load("/cashews/raw.png");
+  const tex = loader.load("/assets/cashews/raw.png");
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.premultiplyAlpha = false;
   return tex;

@@ -19,7 +19,7 @@ const posts = [
     date: "May 22, 2025",
     readTime: "8 min",
     featured: true,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCA0QzyHvwRE3lk4qZREnjTGywVrGhNJkr4S4vtYH8hCJCWytPhJdjqi9Q8cjbKXnH8IALGegW4y0yOpXmRMZR1pMfkMMu6rE9Gwy1_9fe-8kThpDhKRMjtgnByu6UbaGb7dgSEQlBxYnh2oDkiCYIpAKrKB3DkqYwHDHv8oSwQ5MQkn6CM3w6FAxfSHGa73MAhAhVefxyAnBgohKnb384tms-llGR7VeUIA-W8fZVPu9Ecd2-rUQBmGYQ0kItnC1DcVMJ0rp0LnBA",
+    img: "/assets/unit-2/IMG-20250925-WA0045(1).jpg",
   },
   {
     slug: "west-africa-sourcing-story",
@@ -30,7 +30,7 @@ const posts = [
     date: "May 10, 2025",
     readTime: "6 min",
     featured: false,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs",
+    img: "/assets/unit-2/IMG-20250925-WA0039.jpg",
   },
   {
     slug: "cashew-sustainability-2025",
@@ -41,7 +41,7 @@ const posts = [
     date: "Apr 28, 2025",
     readTime: "10 min",
     featured: false,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAuA1c7rGBNLMdGqTYTSQRIe2-t_dc5ZWv1msqw4IBQHVqotZmjO0c26kDpaWDimEthcqbzijBVT_Ap6Zhd8O6PSCQl2h72L7_qN5FMz5bIxYZGJ6FM7ZPLPXX4gE5LnJ2dt1CMVqBjwQkX1PEtxbhMb5BE8HY-YyvPixgeLKvXcWz2OlTZkAHA3_FiE0e7bh_QgnmPLMkHuoeAvB5IhE0R2SgEM2zQbcm5o3t-aKxoY1d1btvptAXuZnv5qTkZMbolD7UJ9oNP0AQ",
+    img: "/assets/unit-1/20260706_173027.jpg",
   },
   {
     slug: "cashew-butter-recipe",
@@ -52,18 +52,18 @@ const posts = [
     date: "Apr 14, 2025",
     readTime: "5 min",
     featured: false,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCA0QzyHvwRE3lk4qZREnjTGywVrGhNJkr4S4vtYH8hCJCWytPhJdjqi9Q8cjbKXnH8IALGegW4y0yOpXmRMZR1pMfkMMu6rE9Gwy1_9fe-8kThpDhKRMjtgnByu6UbaGb7dgSEQlBxYnh2oDkiCYIpAKrKB3DkqYwHDHv8oSwQ5MQkn6CM3w6FAxfSHGa73MAhAhVefxyAnBgohKnb384tms-llGR7VeUIA-W8fZVPu9Ecd2-rUQBmGYQ0kItnC1DcVMJ0rp0LnBA",
+    img: "/assets/unit-1/20260706_173347.jpg",
   },
   {
     slug: "iso-22000-what-it-means",
     title: "ISO 22000 Certification: What It Actually Means for Your Supply Chain",
     excerpt:
-      "Certifications are only as good as the processes behind them. We break down what ISO 22000 requires and why it matters for wholesale buyers.",
-    category: "Industry",
-    date: "Mar 30, 2025",
+      "A deep dive into food safety standards, critical control points, and how ISO compliance protects bulk cashew shipments.",
+    category: "Quality",
+    date: "Apr 2, 2025",
     readTime: "7 min",
     featured: false,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAuA1c7rGBNLMdGqTYTSQRIe2-t_dc5ZWv1msqw4IBQHVqotZmjO0c26kDpaWDimEthcqbzijBVT_Ap6Zhd8O6PSCQl2h72L7_qN5FMz5bIxYZGJ6FM7ZPLPXX4gE5LnJ2dt1CMVqBjwQkX1PEtxbhMb5BE8HY-YyvPixgeLKvXcWz2OlTZkAHA3_FiE0e7bh_QgnmPLMkHuoeAvB5IhE0R2SgEM2zQbcm5o3t-aKxoY1d1btvptAXuZnv5qTkZMbolD7UJ9oNP0AQ",
+    img: "/assets/unit-2/20260713_171137.jpg",
   },
   {
     slug: "gryne-csr-report-2024",
@@ -74,7 +74,7 @@ const posts = [
     date: "Mar 1, 2025",
     readTime: "12 min",
     featured: false,
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs",
+    img: "/assets/unit-2/IMG-20250925-WA0039.jpg",
   },
 ];
 

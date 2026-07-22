@@ -78,23 +78,23 @@ const timeline = [
 
 const team = [
   {
-    name: "Murari",
-    role: "Founder & Managing Director",
-    img: "/team/murari.png",
+    name: "Murari Bellala",
+    role: "M.D, CEO",
+    img: "/assets/team/murari.jpeg",
     color: "border-vibrant-yellow",
     overlay: "bg-vibrant-yellow text-primary",
   },
   {
-    name: "Operational Excellence",
-    role: "Precision Processing & Quality",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAuA1c7rGBNLMdGqTYTSQRIe2-t_dc5ZWv1msqw4IBQHVqotZmjO0c26kDpaWDimEthcqbzijBVT_Ap6Zhd8O6PSCQl2h72L7_qN5FMz5bIxYZGJ6FM7ZPLPXX4gE5LnJ2dt1CMVqBjwQkX1PEtxbhMb5BE8HY-YyvPixgeLKvXcWz2OlTZkAHA3_FiE0e7bh_QgnmPLMkHuoeAvB5IhE0R2SgEM2zQbcm5o3t-aKxoY1d1btvptAXuZnv5qTkZMbolD7UJ9oNP0AQ",
+    name: "Unit 1 Facility",
+    role: "Palasa Industrial Park",
+    img: "/assets/unit-1/20260706_173027.jpg",
     color: "border-electric-blue",
     overlay: "bg-electric-blue text-white",
   },
   {
-    name: "West Africa Sourcing",
-    role: "Direct Origin Infrastructure",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7eVl7ofcZnj6wdzA9SEvo3FBkn2nHqP7EtCY4dD-qzVR3wMKYT5IQ-m2_tcdAIGfmwd84MEFHMBLP7jlSYZ58UrgEfF9oWEnHBHmbmb1hgPGZPNV_ZHLtQh6SpgBB5mEyC0xKRYmZQds7U07WiaEXgZTKkhSgCCPqjsnru9giJlrkCKtYIsuhQF3yqdOnkSuIeWyIvtWnkE8m_QO2OVZjiZ9cqlr7whEA_FYvORLBcVV1TEaLyttiLwbNdmP3zmeHxVhiEoOk5cs",
+    name: "Unit 2 Facility",
+    role: "Komaravolu, Anakapalli",
+    img: "/assets/unit-2/20260713_171137.jpg",
     color: "border-vibrant-yellow",
     overlay: "bg-vibrant-yellow text-primary",
   },
@@ -153,22 +153,19 @@ function TeamCard({ member, index }: { member: { name: string; role: string; img
           alt={member.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+          className="object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-500"
         />
-        <motion.div
-          className={`absolute bottom-0 left-0 w-full ${member.overlay} p-4 border-t-2 border-primary flex justify-between items-center`}
-          initial={{ y: "100%" }}
-          whileHover={{ y: 0 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+        <div
+          className={`absolute bottom-0 left-0 w-full ${member.overlay} p-4 border-t-2 border-primary flex justify-between items-center transform translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-300 ease-out`}
         >
           <span className="font-button-text text-button-text">CONNECT DIRECTLY</span>
           <ArrowRight className="w-5 h-5" />
-        </motion.div>
+        </div>
       </div>
-      <h3 className="font-headline-md text-[30px] leading-none uppercase text-white mb-1 group-hover:text-vibrant-yellow transition-colors">
+      <h3 className="font-headline-md text-[30px] leading-none uppercase text-white mb-2">
         {member.name}
       </h3>
-      <p className="font-label-caps text-label-caps text-electric-blue text-xs">
+      <p className="font-label-caps text-label-caps text-vibrant-yellow font-bold text-sm tracking-wider uppercase">
         {member.role}
       </p>
     </motion.div>
@@ -272,14 +269,14 @@ export default function AboutPage() {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA0QzyHvwRE3lk4qZREnjTGywVrGhNJkr4S4vtYH8hCJCWytPhJdjqi9Q8cjbKXnH8IALGegW4y0yOpXmRMZR1pMfkMMu6rE9Gwy1_9fe-8kThpDhKRMjtgnByu6UbaGb7dgSEQlBxYnh2oDkiCYIpAKrKB3DkqYwHDHv8oSwQ5MQkn6CM3w6FAxfSHGa73MAhAhVefxyAnBgohKnb384tms-llGR7VeUIA-W8fZVPu9Ecd2-rUQBmGYQ0kItnC1DcVMJ0rp0LnBA"
-            alt="Cashew origin branch"
+            src="/assets/unit-2/IMG-20250925-WA0045(1).jpg"
+            alt="Unit 2 Quality Inspection Hub"
             fill
             sizes="(max-width: 768px) 100vw, 380px"
-            className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-125"
+            className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-105"
           />
           <div className="absolute bottom-4 left-4 font-label-caps text-label-caps bg-black text-white px-3 py-1 border-2 border-white text-xs">
-            ORIGIN: WEST AFRICA
+            FACILITY: UNIT 2 HUB
           </div>
         </motion.div>
       </section>

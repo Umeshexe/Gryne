@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               <Image
-                src="/logo/Gryne Rectangle.png"
+                src="/assets/brand/Gryne Rectangle.png"
                 alt="Gryne Cashews"
                 width={160}
                 height={64}
@@ -29,9 +29,10 @@ export default function Footer() {
             <p className="font-body-md text-body-md text-white/80 mb-4 max-w-sm">
               Bold by nature. Premium quality cashews sourced globally, processed expertly from African soil to Indian craftsmanship.
             </p>
-            <p className="font-label-caps text-xs text-vibrant-yellow mb-6">
-              Gryne Pvt Ltd, Plot No: 01, Industrial Park, Palasa, AP 532221
-            </p>
+            <div className="font-label-caps text-xs text-vibrant-yellow mb-6 space-y-1">
+              <p>Head Office: Sri Ganesh Cashew Industry, D.No 19.2.242/A, Srinivasanagar, Palasa, AP 532221</p>
+              <p className="text-white/60 text-[11px]">Unit 1: 86/B Industrial Park, Palasa | Unit 2: Komaravolu, Anakapalli</p>
+            </div>
           </div>
 
           {/* Product Badges */}
