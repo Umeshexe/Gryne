@@ -7,6 +7,8 @@ const blogSlugs = [
   "iso-22000-what-it-means",
   "cashew-roasting-profiles",
   "gryne-csr-report-2024",
+  "future-cashew-processing-automation",
+  "global-trade-dynamics-2026",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

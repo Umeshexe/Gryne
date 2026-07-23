@@ -77,10 +77,49 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Simulate async processing (replace with Resend, Supabase, etc.)
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    const { companyName, email, grade, volume, message } = parsed.data;
 
+    // Simulate async processing if RESEND_API_KEY is not set
+    if (!process.env.RESEND_API_KEY) {
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      return NextResponse.json(
+        {
+          success: true,
+          message: "API Key not set. Simulated success.",
+          referenceId: `GRY-${Date.now().toString(36).toUpperCase()}`,
+        },
+        { status: 200 }
+      );
+    }
+
+    const { Resend } = await import("resend");
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const referenceId = `GRY-${Date.now().toString(36).toUpperCase()}`;
+
+    const { error } = await resend.emails.send({
+      from: "Gryne Website <onboarding@resend.dev>", // Replace with verified domain in production
+      to: process.env.INQUIRY_EMAIL_TO || "info@gryne.in",
+      subject: `New Wholesale Inquiry: ${companyName} (${referenceId})`,
+      html: `
+        <h2>New Wholesale Inquiry</h2>
+        <p><strong>Reference ID:</strong> ${referenceId}</p>
+        <p><strong>Company:</strong> ${companyName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Grade Interested:</strong> ${grade}</p>
+        <p><strong>Est. Volume:</strong> ${volume}</p>
+        <hr />
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\\n/g, "<br>")}</p>
+      `,
+    });
+
+    if (error) {
+      console.error("Resend Error:", error);
+      return NextResponse.json(
+        { success: false, error: "Failed to send inquiry email." },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       {

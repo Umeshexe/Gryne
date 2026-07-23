@@ -76,6 +76,28 @@ const posts = [
     featured: false,
     img: "/assets/unit-2/IMG-20250925-WA0039.jpg",
   },
+  {
+    slug: "future-cashew-processing-automation",
+    title: "The Future of Cashew Processing: Automation & Quality",
+    excerpt:
+      "From AI-driven optical sorting to automated shelling, see how modern technology is reshaping the cashew processing landscape in India.",
+    category: "Industry",
+    date: "Jun 10, 2025",
+    readTime: "7 min",
+    featured: false,
+    img: "/assets/unit-1/20260706_172750.jpg",
+  },
+  {
+    slug: "global-trade-dynamics-2026",
+    title: "Global Trade Dynamics: Navigating the 2026 Cashew Market",
+    excerpt:
+      "A deep dive into export trends, pricing fluctuations, and what B2B buyers can expect heading into the next fiscal year.",
+    category: "Industry",
+    date: "Jun 20, 2025",
+    readTime: "9 min",
+    featured: false,
+    img: "/assets/unit-2/20260713_171442.jpg",
+  },
 ];
 
 const categories = ["All", "Industry", "Sustainability", "Recipes", "Company"];

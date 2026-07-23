@@ -8,6 +8,7 @@ import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
 import SmoothScroll from "@/components/layout/smooth-scroll";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -110,6 +111,7 @@ export default function RootLayout({
               <WholesaleInquiryModal />
               <Toaster />
               <Analytics />
+              <SpeedInsights />
             </InquiryProvider>
           </SmoothScroll>
         </Providers>

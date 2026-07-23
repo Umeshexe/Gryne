@@ -126,6 +126,42 @@ const articles: Record<string, {
     pullQuote: "Participating farmers saw average income increase by 18% year-on-year through our direct sourcing model and cooperative training programme.",
     related: ["cashew-sustainability-2025", "west-africa-sourcing-story"],
   },
+  "future-cashew-processing-automation": {
+    title: "The Future of Cashew Processing: Automation & Quality",
+    excerpt: "From AI-driven optical sorting to automated shelling, see how modern technology is reshaping the cashew processing landscape in India.",
+    category: "Industry",
+    date: "Jun 10, 2025",
+    readTime: "7 min",
+    author: "K. Murari",
+    authorRole: "Managing Director, Gryne",
+    img: "/assets/unit-1/20260706_172750.jpg",
+    body: [
+      "The traditional cashew processing industry has long relied on intense manual labor. However, as global demand surges and quality standards become more stringent, automation is no longer a luxury—it is an absolute necessity.",
+      "At Gryne, we have heavily invested in AI-driven optical sorting machines. These machines use high-speed cameras and machine learning algorithms to instantly grade kernels by color, size, and defect level, far surpassing human capabilities in both speed and consistency.",
+      "Automated shelling lines have also revolutionized our yield. By carefully controlling the pressure applied to the raw nut, we have reduced the percentage of broken kernels (LWP) and increased our output of premium W180 and W240 grades.",
+      "The future belongs to processors who can marry the precision of technology with the ethical sourcing of raw materials. This ensures a flawless product for B2B buyers while maintaining sustainable practices.",
+    ],
+    pullQuote: "Automation is no longer a luxury in the cashew industry—it is an absolute necessity to guarantee consistent quality.",
+    related: ["understanding-cashew-grades", "iso-22000-what-it-means"],
+  },
+  "global-trade-dynamics-2026": {
+    title: "Global Trade Dynamics: Navigating the 2026 Cashew Market",
+    excerpt: "A deep dive into export trends, pricing fluctuations, and what B2B buyers can expect heading into the next fiscal year.",
+    category: "Industry",
+    date: "Jun 20, 2025",
+    readTime: "9 min",
+    author: "Market Intelligence",
+    authorRole: "Gryne Cashews Syndicate",
+    img: "/assets/unit-2/20260713_171442.jpg",
+    body: [
+      "The global cashew market is experiencing a significant shift. While West Africa remains the powerhouse of Raw Cashew Nut (RCN) production, processing capacity is rapidly expanding in India and Vietnam. This dynamic dictates global pricing.",
+      "Heading into 2026, buyers should anticipate moderate price fluctuations. Freight costs from West Africa to processing hubs have stabilized, but localized weather events in Côte d'Ivoire and Guinea-Bissau may affect early crop yields.",
+      "Demand in Europe and North America continues to grow steadily at 4-5% annually, driven by the plant-based milk and snacking sectors. However, the true growth vector is the Middle East and domestic Indian markets, where premium grades (W180, W240) are commanding higher margins.",
+      "For bulk buyers, securing long-term forward contracts remains the best hedge against mid-season volatility. Partnering with a fully integrated supplier—one who controls the supply chain from African farm to Indian mill—ensures both price stability and traceability.",
+    ],
+    pullQuote: "Securing long-term forward contracts remains the best hedge against mid-season volatility in the global cashew market.",
+    related: ["west-africa-sourcing-story", "understanding-cashew-grades"],
+  },
 };
 
 const categoryColors: Record<string, string> = {
