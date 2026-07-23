@@ -36,10 +36,14 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GRYNE CASHEWS | Bold By Nature",
+  metadataBase: new URL("https://www.gryne.in"),
+  title: {
+    default: "GRYNE CASHEWS | Bold By Nature",
+    template: "%s | Gryne Cashews",
+  },
   description:
     "Premium grade wholesale cashews sourced with uncompromising integrity. Controlling the direct supply chain from West African soils to precision mills in India.",
-  keywords: ["cashews", "wholesale", "bulk cashew supply", "Africa to India", "B2B agriculture", "premium cashews", "Gryne"],
+  keywords: ["cashews", "wholesale", "bulk cashew supply", "Africa to India", "B2B agriculture", "premium cashews", "Gryne", "cashew manufacturer", "cashew exporter"],
   icons: {
     icon: "/icon.png",
     shortcut: "/favicon.ico",
@@ -51,6 +55,33 @@ export const metadata: Metadata = {
     description: "Premium wholesale grade cashews sourced directly from West Africa and precision milled in India.",
     type: "website",
     locale: "en_US",
+    siteName: "Gryne Cashews",
+    url: "https://www.gryne.in",
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Gryne Cashews Processing Facility",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GRYNE CASHEWS | Bold By Nature",
+    description: "Premium wholesale grade cashews sourced directly from West Africa and precision milled in India.",
+    images: ["/twitter-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

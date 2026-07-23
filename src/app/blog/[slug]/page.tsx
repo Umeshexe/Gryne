@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Share2, BookOpen } from "lucide-react";
@@ -133,6 +134,41 @@ const categoryColors: Record<string, string> = {
   Recipes: "bg-vibrant-yellow text-primary",
   Company: "bg-secondary text-white",
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles[slug];
+  
+  if (!article) {
+    return { title: "Article Not Found" };
+  }
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: "article",
+      publishedTime: article.date,
+      authors: [article.author],
+      images: [
+        {
+          url: article.img,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+      images: [article.img],
+    },
+  };
+}
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
