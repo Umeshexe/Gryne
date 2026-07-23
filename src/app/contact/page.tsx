@@ -355,7 +355,7 @@ export default function ContactPage() {
             {/* Map Embed */}
             <div className="w-full h-[220px] border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden relative">
               <iframe
-                src="https://maps.google.com/maps?q=Palasa%2C%20Industrial%20Park%2C%20Andhra%20Pradesh%20532221&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Sri%20Ganesh%20Cashew%20Industry%2C%20Palasa&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "grayscale(80%) contrast(120%)" }}
