@@ -77,6 +77,7 @@ const images = [
     tag: "TEAM",
     tags: ["TEAM"],
     span: "tall",
+    objectPosition: "object-top",
   },
 ];
 
@@ -124,7 +125,7 @@ function GalleryCard({
           loading="lazy"
           decoding="async"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-105"
+          className={`object-cover ${img.objectPosition || "object-center"} group-hover:scale-105 transition-transform duration-700 filter contrast-105`}
         />
       </div>
       {/* Overlay */}
