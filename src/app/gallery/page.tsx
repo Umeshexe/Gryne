@@ -114,14 +114,19 @@ function GalleryCard({
       transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
       whileHover={{ y: -6 }}
       onClick={onClick}
-      className="relative w-full border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden group cursor-pointer bg-surface"
+      className="gallery-grid-item relative w-full border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden group cursor-pointer bg-surface"
     >
-      <img
-        src={img.src}
-        alt={img.alt}
-        className="w-full h-auto block group-hover:scale-105 transition-transform duration-700 filter contrast-105"
-        loading="lazy"
-      />
+      <div className="relative w-full aspect-[4/3]">
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          loading="lazy"
+          decoding="async"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-105"
+        />
+      </div>
       {/* Overlay */}
       <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/40 transition-all duration-400 flex items-center justify-center pointer-events-none z-10">
         <motion.div
@@ -199,6 +204,7 @@ function Lightbox({
         <img
           src={imgs[index].src}
           alt={imgs[index].alt}
+          decoding="async"
           className="max-w-[90vw] max-h-[75vh] w-auto h-auto object-contain block"
         />
         {/* Caption */}

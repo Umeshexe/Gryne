@@ -194,6 +194,7 @@ export default function BusinessPage() {
               src="/assets/unit-2/20260713_171137.jpg"
               alt="Gryne Unit 2 Processing Facility (Anakapalli)"
               fill
+              priority
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-center filter brightness-105 contrast-105"
             />

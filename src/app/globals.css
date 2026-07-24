@@ -176,3 +176,16 @@ body {
   font-family: var(--font-hanken), sans-serif;
   background-color: #F7F2E8;
 }
+
+/* ── Image Performance ───────────────────────────────────── */
+/* Defers rendering of off-screen image sections to the GPU only when needed */
+.gallery-grid-item {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 400px; /* estimated height placeholder */
+}
+
+/* Ensure all images never overflow and render cleanly */
+img {
+  max-width: 100%;
+  height: auto;
+}

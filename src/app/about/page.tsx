@@ -76,27 +76,36 @@ const timeline = [
   },
 ];
 
+const BLUR_UNIT1 = "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAKAAoDASIAAhEBAxEB/8QAFQABAAAAAAAAAAAAAAAAAAAABf/EACEQAAIBAwMFAAAAAAAAAAAAAAECAwAEESExBhNBUZH/xAAVAQEBAAAAAAAAAAAAAAAAAAACA//EABkRAAIDAQAAAAAAAAAAAAAAAAABEQIhMf/aAAwDAQACEQMRAD8Am8grNDJeyoI0kiEhC/J9OGXt6aaLHTdlFAkqnuBsewz7+0TW6jnb3Q3g/9k=";
+const BLUR_UNIT2 = "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAKAAoDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMEBf/EACAQAQACAgIBBQAAAAAAAAAAAAECAwARBAUSIUJhsbL/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABgRAAIDAAAAAAAAAAAAAAAAAAARAQIh/9oADAMBAAIRAxEAPwBPbE7iFHKkNhHe4vqbyAhYAMqt/MdP1mp2CvNsFUfL84FQNUFPaYTsIullqP/Z";
+
 const team = [
   {
     name: "Murari Bellala",
     role: "M.D, CEO",
     img: "/assets/team/murari.jpeg",
+    blur: "data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAKAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgME/8QAJBAAAQIFAgcAAAAAAAAAAAAAAQADAgQREiEFYQYTIjFCUZH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8ArL8Ry5ENebAKYEfUPoyt41uTIBuOdkMb7R7UATBmXZLLZLLZNo8R6UtMf//Z",
     color: "border-vibrant-yellow",
     overlay: "bg-vibrant-yellow text-primary",
+    priority: true,
   },
   {
     name: "Unit 1 Facility",
     role: "Palasa Industrial Park",
     img: "/assets/unit-1/20260706_173027.jpg",
+    blur: BLUR_UNIT1,
     color: "border-electric-blue",
     overlay: "bg-electric-blue text-white",
+    priority: false,
   },
   {
     name: "Unit 2 Facility",
     role: "Komaravolu, Anakapalli",
     img: "/assets/unit-2/20260713_171137.jpg",
+    blur: BLUR_UNIT2,
     color: "border-vibrant-yellow",
     overlay: "bg-vibrant-yellow text-primary",
+    priority: false,
   },
 ];
 
@@ -136,7 +145,7 @@ function TimelineCard({ step, i }: { step: { num: string; title: string; desc: s
   );
 }
 
-function TeamCard({ member, index }: { member: { name: string; role: string; img: string; color: string; overlay: string }; index: number }) {
+function TeamCard({ member, index }: { member: { name: string; role: string; img: string; blur: string; color: string; overlay: string; priority: boolean }; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   return (
@@ -154,6 +163,9 @@ function TeamCard({ member, index }: { member: { name: string; role: string; img
             alt={member.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            placeholder="blur"
+            blurDataURL={member.blur}
+            priority={member.priority}
             className="object-cover object-top filter grayscale group-hover:grayscale-0 transition-[filter] duration-500 transform-gpu will-change-[filter]"
           />
           <div
@@ -274,6 +286,7 @@ export default function AboutPage() {
             src="/assets/unit-2/IMG-20250925-WA0045(1).jpg"
             alt="Unit 2 Quality Inspection Hub"
             fill
+            priority
             sizes="(max-width: 768px) 100vw, 380px"
             className="object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-105"
           />

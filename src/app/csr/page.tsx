@@ -216,6 +216,7 @@ export default function CSRPage() {
                 src="/assets/unit-2/IMG-20250925-WA0039.jpg"
                 alt="Gryne Unit 2 Bulk Storage & Warehouse"
                 fill
+                priority
                 className="object-cover filter brightness-105 group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 500px"
               />
