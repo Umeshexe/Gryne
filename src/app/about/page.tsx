@@ -140,35 +140,37 @@ function TeamCard({ member, index }: { member: { name: string; role: string; img
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      className={`group cursor-pointer ${index === 1 ? "md:translate-y-12" : ""}`}
-    >
-      <div className={`w-full aspect-[3/4] bg-surface border-2 ${member.color} mb-6 relative overflow-hidden`}>
-        <Image
-          src={member.img}
-          alt={member.name}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-500"
-        />
-        <div
-          className={`absolute bottom-0 left-0 w-full ${member.overlay} p-4 border-t-2 border-primary flex justify-between items-center transform translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-300 ease-out`}
-        >
-          <span className="font-button-text text-button-text">CONNECT DIRECTLY</span>
-          <ArrowRight className="w-5 h-5" />
+    <div className={index === 1 ? "md:mt-16" : ""}>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: index * 0.15 }}
+        className="group cursor-pointer h-full"
+      >
+        <div className={`w-full aspect-[3/4] bg-surface border-2 ${member.color} mb-6 relative overflow-hidden transform-gpu`}>
+          <Image
+            src={member.img}
+            alt={member.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover object-top filter grayscale group-hover:grayscale-0 transition-[filter] duration-500 transform-gpu will-change-[filter]"
+          />
+          <div
+            className={`absolute bottom-0 left-0 w-full ${member.overlay} p-4 border-t-2 border-primary flex justify-between items-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out will-change-transform`}
+          >
+            <span className="font-button-text text-button-text">CONNECT DIRECTLY</span>
+            <ArrowRight className="w-5 h-5" />
+          </div>
         </div>
-      </div>
-      <h3 className="font-headline-md text-[30px] leading-none uppercase text-white mb-2">
-        {member.name}
-      </h3>
-      <p className="font-label-caps text-label-caps text-vibrant-yellow font-bold text-sm tracking-wider uppercase">
-        {member.role}
-      </p>
-    </motion.div>
+        <h3 className="font-headline-md text-[30px] leading-none uppercase text-white mb-2">
+          {member.name}
+        </h3>
+        <p className="font-label-caps text-label-caps text-vibrant-yellow font-bold text-sm tracking-wider uppercase">
+          {member.role}
+        </p>
+      </motion.div>
+    </div>
   );
 }
 
