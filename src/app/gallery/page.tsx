@@ -107,6 +107,10 @@ function GalleryCard({
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
+  const aspectClass = 
+    img.span === "tall" ? "aspect-[3/4]" : 
+    img.span === "wide" ? "aspect-[16/9]" : "aspect-[4/3]";
+
   return (
     <motion.div
       ref={ref}
@@ -117,7 +121,7 @@ function GalleryCard({
       onClick={onClick}
       className="gallery-grid-item relative w-full border-2 border-primary shadow-[4px_4px_0px_0px_#3B28FF] overflow-hidden group cursor-pointer bg-surface"
     >
-      <div className="relative w-full aspect-[4/3]">
+      <div className={`relative w-full ${aspectClass}`}>
         <Image
           src={img.src}
           alt={img.alt}
