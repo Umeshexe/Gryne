@@ -58,21 +58,21 @@ export default function NavBar() {
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
       >
-        <div className="flex justify-between items-center pr-6 md:pr-gutter pl-0 py-0 w-full max-w-[1440px] mx-auto">
+        <div className="flex justify-between items-center pr-6 md:pr-gutter pl-5 h-[76px] w-full max-w-[1440px] mx-auto">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.25, duration: 0.4 }}
-            className="md:-ml-6"
+            className=""
           >
             <Link href="/" className="block hover:scale-105 transition-transform duration-300">
               <Image
-              src="/assets/brand/Gryne Rectangle.png"
+              src="/assets/brand/Gryne Rectangle Cropped.png"
               alt="Gryne Cashews"
-              width={180}
-              height={72}
-              className="h-10 md:h-12 w-auto object-contain cursor-pointer"
+              width={78}
+              height={36}
+              className="h-[36px] w-auto object-contain cursor-pointer"
               priority
             />
             </Link>
@@ -170,7 +170,7 @@ export default function NavBar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[72px] inset-x-0 bottom-0 z-50 bg-on-background/30 backdrop-blur-sm md:hidden"
+            className="fixed top-[76px] inset-x-0 bottom-0 z-50 bg-on-background/30 backdrop-blur-sm md:hidden"
             onClick={() => setMobileMenuOpen(false)}
           >
             <motion.div

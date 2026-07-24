@@ -103,7 +103,7 @@ export default function RootLayout({
           <SmoothScroll>
             <InquiryProvider>
               <NavBar />
-              <main className="flex-grow pt-[72px] md:pt-[96px]">
+              <main className="flex-grow pt-[76px]">
                 {children}
 
               </main>
